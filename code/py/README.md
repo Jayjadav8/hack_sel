@@ -167,7 +167,12 @@ self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),
 #webdriver.Remote(command_executor='http://localhost:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME)
 
 ```
-4. python file `main.py`
+4. Within `test_p1`function at last add below line to capture screen shots
+```bash
+self.driver.get_screenshot_as_file("screenshot.png")
+```
+
+5. python file `main.py`
 
 - The `main.py` script serves as the entry point for executing the main function and running the tests defined in the `TestP1` class.
 - Importing the `TestP1` class from `test_P1.py` :
