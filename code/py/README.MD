@@ -4,7 +4,7 @@
 ## Pre-requisites:
 * Ubuntu 22.04.10 LTS
 * python version 3.10.7
-
+* install webdriver for chrome :TODO : finish
 ``` bash
 $ sudo apt install python-is-python3 python3-pip
 
@@ -25,6 +25,7 @@ $ (.venv) jay@jay-Latitude-3410:~/code/play_dir/hack_sel/code/py$ which python
 ```bash
 $ pip install pytest 
 $ pip install selenium
+$ pip install webdriver-manager 
 $ pip freeze > req.txt
 ```
 ## Explain .gitignore file
