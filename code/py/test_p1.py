@@ -10,12 +10,21 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+options = Options()
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
 class TestP1():
   def setup_method(self, method):
-    self.driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME)
+    self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    #webdriver.Remote(command_executor='http://localhost:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME)
     self.vars = {}
   
-  def teardown_method(self, method):
+  def teardown_method(self,method):
     self.driver.quit()
   
   def test_p1(self):
@@ -26,15 +35,17 @@ class TestP1():
     # 2 | setWindowSize | 1440x804 | 
     self.driver.set_window_size(1440, 804)
     # 3 | click | id=APjFqb | 
-    self.driver.find_element(By.ID, "APjFqb").click()
+    searchBox=self.driver.find_element(By.ID, "APjFqb")
+    searchBox.click()
     # 4 | click | css=#jZ2SBf > .wM6W7d > span | 
-    self.driver.find_element(By.CSS_SELECTOR, "#jZ2SBf > .wM6W7d > span").click()
+    #self.driver.find_element(By.CSS_SELECTOR, "#jZ2SBf > .wM6W7d > span").click()
     # 5 | runScript | window.scrollTo(0,68) | 
-    self.driver.execute_script("window.scrollTo(0,68)")
+    #self.driver.execute_script("window.scrollTo(0,68)")
     # 6 | runScript | window.scrollTo(0,309) | 
-    self.driver.execute_script("window.scrollTo(0,309)")
+    #self.driver.execute_script("window.scrollTo(0,309)")
     # 7 | click | css=.MjjYud:nth-child(5) .LC20lb | 
-    self.driver.find_element(By.CSS_SELECTOR, ".MjjYud:nth-child(5) .LC20lb").click()
+    #self.driver.find_element(By.CSS_SELECTOR, ".MjjYud:nth-child(5) .LC20lb").click()
     # 8 | click | css=.pageWrapper_ca2kA | 
-    self.driver.find_element(By.CSS_SELECTOR, ".pageWrapper_ca2kA").click()
-  
+    #self.driver.find_element(By.CSS_SELECTOR, ".pageWrapper_ca2kA").click()
+    self.driver.get_screenshot_as_file("screenshot.png")
+
