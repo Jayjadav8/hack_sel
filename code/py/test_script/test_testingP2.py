@@ -19,9 +19,6 @@ options = Options()
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 
-
-
-
 class TestTestingP2():
   ''' 
   DESCRIPTION: This test trys to login with an unregistered UID & PWD
@@ -54,10 +51,10 @@ class TestTestingP2():
     usernameTxt=self.driver.find_element(By.ID, "username")
     assert usernameTxt is not None
     assert usernameTxt.tag_name == "input"
-    usernameTxt.send_keys("Priya3457")
+    # usernameTxt.send_keys("Priya3457")
 
-    self.driver.find_element(By.ID, "password").send_keys("Priya")
-    self.driver.find_element(By.ID, "username").click()
+    # self.driver.find_element(By.ID, "password").send_keys("Priya")
+    # self.driver.find_element(By.ID, "username").click()
 
     time.sleep(5)
 
@@ -69,6 +66,8 @@ class TestTestingP2():
 
     self.driver.find_element(By.ID, "password").send_keys("mishra")
     self.driver.find_element(By.ID, "kc-login").click()
+    
+    time.sleep(5)
 
     #Step 4
     # The page should do a roundtrip to server:
@@ -76,10 +75,14 @@ class TestTestingP2():
     # Test assertion: the page should have a span with id: input-error and 
     # its text should contain: "Invalid username or password."
     invalid_span = self.driver.find_element(By.ID, "input-error")
-    assert invalid_span is not None 
-    #TODO: check if invalid_span is of type span
-    assert invalid_span.tag_name == "span"
+    time.sleep(5)
+    print(invalid_span.text)
+    # assert invalid_span is not None 
+    # #TODO: check if invalid_span is of type span
+    
+    
+    # assert invalid_span.tag_name == "span"
 
-    # pytest.assertIn("Invalid username or password.", invalid_span.text)
-    
-    
+    # pytest. assertIn("Invalid username or password.", invalid_span.text)
+    messsage = "Invalid username or password."
+    assert messsage == invalid_span.text 
