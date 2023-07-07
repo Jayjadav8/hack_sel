@@ -1,11 +1,18 @@
+# Automation testing using Selenium:
 
-## Automation testing:
+1. Make a new directory for storing test_script python file and name it `test_script` and move inside `test_script` 
 
-1. Import the python file extracted from selenium extension to py directory( current directory) lets say it as `test_P1.py` .
-2. Create python file say `main.py` 
+```bash
+$ mkdir test_script
+$ cd test_script
+```
+
+2. Import the python file extracted from selenium extension to `test_script` lets say it as `test_P1.py` .
+
+3. Create python file in `py` directory say `main.py` 
 -  This is executable file for  `test_P1.py` .
 
-### Make following Changes in  test_P1.py  as follows:
+## Make following Changes in  test_P1.py  as follows:
 
 1. Import required imports which are as follows:
 

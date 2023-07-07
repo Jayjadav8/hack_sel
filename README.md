@@ -1,4 +1,4 @@
-# README :  Step-by-Step Guide for setup of   Automation testing  through selenium.
+# Step-by-Step Guide for setup of   Automation testing  through selenium.
 
 * This code was developed on linux Ubuntu x64.
 
@@ -164,7 +164,38 @@ $ touch .gitignore
 ```
 * And  Now paste following in .gitignore file
 ```bash
-__pycache__/**
 *.png
 ```
 
+## Verification of setup:
+
+- In order to verify packages are install :
+
+1. pytest:
+
+```bash
+$ pip freeze | grep pytest
+```
+- Output
+```bash
+pytest==7.4.0
+```
+
+2. webdriver-manager
+
+```bash
+$  pip freeze | grep webdriver-manager
+```
+- Output
+```bash
+webdriver-manager==3.8.6
+```
+3. selenium
+
+```bash
+$ pip freeze | grep selenium
+```
+- Output
+```bash
+selenium==4.10.0
+```
