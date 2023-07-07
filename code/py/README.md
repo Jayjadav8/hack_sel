@@ -1,18 +1,37 @@
 # Automation testing using Selenium:
 
-1. Make a new directory for storing test_script python file and name it `test_script` and move inside `test_script` 
+
+## Steps before proceding:
+
+1. Check if virtual env is activated , if not activate it:
+```bash
+$ source .venv/bin/activate
+```
+
+2. Make a new directory for storing test_script python file and name it `test_script` and move inside `test_script` 
 
 ```bash
 $ mkdir test_script
 $ cd test_script
 ```
 
-2. Import the python file extracted from selenium extension to `test_script` lets say it as `test_P1.py` .
+3. Import the python file extracted from selenium extension to `test_script` lets say it as `test_P1.py` .
 
-3. Create python file in `py` directory say `main.py` 
+4. Create python file in `py` directory say `main.py` 
 -  This is executable file for  `test_P1.py` .
 
-## Make following Changes in  test_P1.py  as follows:
+5. Create another  .gitignore file in `test_script` directory:
+
+``` bash
+$ touch .gitignore
+```
+* And  Now paste following in .gitignore file
+```bash
+__pycache__/**
+```
+
+## Steps towards Automation testing:
+### Make following Changes in  `test_P1.py`  as follows:
 
 1. Import required imports which are as follows:
 
@@ -46,13 +65,14 @@ self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),
 ```bash
 self.driver.get_screenshot_as_file("screenshot.png")
 ```
+### Make following Changes in  `main.py`  as follows:
 
-5. python file `main.py`
+1. python file `main.py`
 
 - The `main.py` script serves as the entry point for executing the main function and running the tests defined in the `TestP1` class.
 - Importing the `TestP1` class from `test_P1.py` :
 ```bash
-from test_p1 import TestP1
+from test_script.test_p1 import TestP1
 ```
 - Defining the main() function which  is the entry point of the script.
 -  It is responsible for orchestrating the execution of the tests defined in the `TestP1` class.
@@ -66,6 +86,7 @@ p1 = TestP1()
     p1.test_p1()
     p1.teardown_method("")
 ```
+
 
 
 
