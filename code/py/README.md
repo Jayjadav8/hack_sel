@@ -7,20 +7,24 @@
 ```bash
 $ source .venv/bin/activate
 ```
+2. Move to `py` directory :
+```bash
+$ cd code/py
+``` 
 
-2. Make a new directory for storing test_script python file and name it `test_script` and move inside `test_script` 
+3. Make a new directory for storing test_script python file and name it `test_script` and move inside `test_script` 
 
 ```bash
 $ mkdir test_script
 $ cd test_script
 ```
 
-3. Import the python file extracted from selenium extension to `test_script` lets say it as `test_P1.py` .
+4. Import the python file extracted from selenium extension to `test_script` lets say it as `test_P1.py` .
 
-4. Create python file in `py` directory say `main.py` 
+5. Create python file in `py` directory say `main.py` 
 -  This is executable file for  `test_P1.py` .
 
-5. Create another  .gitignore file in `test_script` directory:
+6. Create another  .gitignore file in `test_script` directory:
 
 ``` bash
 $ touch .gitignore
@@ -85,6 +89,11 @@ p1 = TestP1()
     p1.setup_method("")
     p1.test_p1()
     p1.teardown_method("")
+```
+
+## Run test cases :
+```bash
+$ python -m pytest -v main.py
 ```
 
 
