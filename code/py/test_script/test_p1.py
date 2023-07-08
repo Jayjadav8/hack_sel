@@ -37,15 +37,5 @@ class TestP1():
     # 3 | click | id=APjFqb | 
     searchBox=self.driver.find_element(By.ID, "APjFqb")
     searchBox.click()
-    # 4 | click | css=#jZ2SBf > .wM6W7d > span | 
-    #self.driver.find_element(By.CSS_SELECTOR, "#jZ2SBf > .wM6W7d > span").click()
-    # 5 | runScript | window.scrollTo(0,68) | 
-    #self.driver.execute_script("window.scrollTo(0,68)")
-    # 6 | runScript | window.scrollTo(0,309) | 
-    #self.driver.execute_script("window.scrollTo(0,309)")
-    # 7 | click | css=.MjjYud:nth-child(5) .LC20lb | 
-    #self.driver.find_element(By.CSS_SELECTOR, ".MjjYud:nth-child(5) .LC20lb").click()
-    # 8 | click | css=.pageWrapper_ca2kA | 
-    #self.driver.find_element(By.CSS_SELECTOR, ".pageWrapper_ca2kA").click()
     self.driver.get_screenshot_as_file("screenshot.png")
 

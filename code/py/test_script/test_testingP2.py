@@ -30,9 +30,7 @@ class TestTestingP2():
   EXPECTED OUTCOME: The login should fail
   '''
   def setup_method(self, method):
-    #TODO: @jay please fix this
     self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-    # self.driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME)
     self.vars = {}
   
   def teardown_method(self, method):
@@ -51,10 +49,6 @@ class TestTestingP2():
     usernameTxt=self.driver.find_element(By.ID, "username")
     assert usernameTxt is not None
     assert usernameTxt.tag_name == "input"
-    # usernameTxt.send_keys("Priya3457")
-
-    # self.driver.find_element(By.ID, "password").send_keys("Priya")
-    # self.driver.find_element(By.ID, "username").click()
 
     time.sleep(5)
 
@@ -62,7 +56,6 @@ class TestTestingP2():
     self.driver.find_element(By.ID, "password").click()
 
     time.sleep(5)
-
 
     self.driver.find_element(By.ID, "password").send_keys("mishra")
     self.driver.find_element(By.ID, "kc-login").click()
@@ -75,8 +68,6 @@ class TestTestingP2():
     # Test assertion: the page should have a span with id: input-error and 
     # its text should contain: "Invalid username or password."
     invalid_span = self.driver.find_element(By.ID, "input-error")
-    time.sleep(5)
-    print(invalid_span.text)
     # assert invalid_span is not None 
     # #TODO: check if invalid_span is of type span
     

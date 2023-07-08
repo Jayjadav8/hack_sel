@@ -37,6 +37,8 @@ __pycache__/**
 ## Steps towards Automation testing:
 ### Make following Changes in  `test_P1.py`  as follows:
 
+- `test_P1.py` is simple script of opening google web browser and storing screen shot of page.
+
 1. Import required imports which are as follows:
 
 ```bash
@@ -80,7 +82,7 @@ from test_script.test_p1 import TestP1
 ```
 - Defining the main() function which  is the entry point of the script.
 -  It is responsible for orchestrating the execution of the tests defined in the `TestP1` class.
-- Creating an instance of the TestP1 class:
+- Creating an instance of the `TestP1` class:
 ```bash
 p1 = TestP1()
 ```
