@@ -37,6 +37,8 @@ class TestTestingP2():
     self.driver.quit()
   
   def test_testingP2(self):
+    '''steps for insertion of user name and password and then keycloak verify that 
+    user name and password are not registered and throw input error'''
     #Step 1:
     self.driver.get("https://qbrow.rasree.com/")
     self.driver.set_window_size(1440, 804)
