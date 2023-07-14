@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.support import expected_conditions as EC
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
@@ -34,8 +35,11 @@ class TestP1():
     self.driver.get("https://www.google.com/")
     # 2 | setWindowSize | 1440x804 | 
     self.driver.set_window_size(1440, 804)
+
     # 3 | click | id=APjFqb | 
-    searchBox=self.driver.find_element(By.ID, "APjFqb")
+    wait = WebDriverWait(self.driver, 60)    
+    searchBox = wait.until(EC.presence_of_element_located((By.ID,"APjFqb")))
     searchBox.click()
+
     self.driver.get_screenshot_as_file("screenshot.png")
 
