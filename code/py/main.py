@@ -1,4 +1,4 @@
-from test_script.test_unregistered_id import TestTestingP2 
+from test_script.test_unregistered_id import TestUnregisteredUID 
 from test_script.test_p1 import TestP1
 from test_script.test_page2Loginpage import TestPage2Loginpage
 # from test_script.test_page3browseSearchpagewithoutlogin import TestPage3browseSearchpagewithoutlogin
@@ -11,9 +11,9 @@ def main():
     p1.teardown_method("")
 
 
-    p2 = TestTestingP2()
+    p2 = TestUnregisteredUID()
     p2.setup_method("")
-    p2.test_testingP2()
+    p2.test_unregestered_user_id_and_password()
     p2.teardown_method("")
 
 

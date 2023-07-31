@@ -188,7 +188,7 @@ $  pip freeze | grep webdriver-manager
 ```
 - Output
 ```bash
-webdriver-manager==3.8.6
+webdriver-manager==4.0.0
 ```
 3. selenium
 

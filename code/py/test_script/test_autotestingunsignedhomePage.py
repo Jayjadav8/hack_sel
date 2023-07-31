@@ -23,11 +23,21 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 class TestAutotestingunsignedhomePage():
   def setup_method(self, method):
+    '''Set up the test environment before each test method runs
+    - webdriver.Chrome class is used to create an instance of the Chrome browser driver.
+    '''
+
     self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     self.vars = {}
   
   def teardown_method(self, method):
+    '''
+    - Clean up after each test method finishes.
+    - self.driver.quit() is called.
+    - This command tells Selenium to close and quit the web browser and release any associated resources.
+    '''
+
     self.driver.quit()
   
   def test_autotestingunsignedhomePage(self):
@@ -37,109 +47,115 @@ class TestAutotestingunsignedhomePage():
     test_name = os.path.splitext(filename)[0]
 
     # Create a directory for storing the screenshots if it doesn't exist
-    screenshots_directory = "screenshot"
+    screenshots_directory = "../screenshot"
     test_directory = os.path.join(screenshots_directory, test_name)
     if not os.path.exists(test_directory):
         os.makedirs(test_directory)
-
 
     # Test name: Auto_testing_unsigned_home_Page
     # Step # | name | target | value
     # 1 | open | / | 
     self.driver.get("https://qbrow.rasree.com/")
-    # 2 | setWindowSize | 1440x804 | 
+    expected_title = "Home | Rasree"
+
+    assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
+        does not match expected title '{expected_title}'"
+
+    # # 2 | setWindowSize | 1440x804 | 
     self.driver.set_window_size(1440, 804)
-    # 3 | click | id=inputExploreBtn | 
-    # click on explore
+
+
+    # # 3 | click | id=inputExploreBtn | 
+    # # click on explore
     self.driver.find_element(By.ID, "inputExploreBtn").click()
     screenshot_filename = f"{test_name}_screenshot_explorepage.png"
     screenshot_path = os.path.join(test_directory, screenshot_filename)
     self.driver.get_screenshot_as_file(screenshot_path)
 
+    # # 4 | click | id=inputHomeIcon | 
+    # # back to home page
+    self.driver.find_element(By.ID, "inputHomeIcon").click()
 
-
-    # 4 | click | id=inputHomeIcon | 
-    # back to home page
-    self.driver.find_element(By.ID, "inputHomeIcon").click()
-    # 5 | click | id=inputSearchBar | 
-    # click on search bar text fill
-    self.driver.find_element(By.ID, "inputSearchBar").click()
-    # 6 | type | id=inputSearchBar | course
-    # type in search bar fill
-    self.driver.find_element(By.ID, "inputSearchBar").send_keys("course")
-    # 7 | click | id=inputClickOnSearchItem | 
-    # click on search icon
-    self.driver.find_element(By.ID, "inputClickOnSearchItem").click()
-    # 8 | click | id=inputHomeIcon | 
-    # back to home page
-    self.driver.find_element(By.ID, "inputHomeIcon").click()
     
-    time.sleep(5)
-    
-    # 9 | click | id=inputViewAllCoursesButton | 
-    # click on view all in course
-    self.driver.find_element(By.ID, "inputViewAllCoursesButton").click()
-    # 10 | click | id=inputHomeIcon | 
-    # back to home page
-    self.driver.find_element(By.ID, "inputHomeIcon").click()
-    # 11 | click | id=inputViewCourseDetails_1 | 
-    
-    time.sleep(5)
-    
-    # click on view detail in course button
-    self.driver.find_element(By.ID, "inputViewCourseDetails_1").click()
-    # # 12 | click | id=inputHomeIcon | 
+    # # 5 | click | id=inputSearchBar | 
+    # # click on search bar text fill
+    # self.driver.find_element(By.ID, "inputSearchBar").click()
+    # # 6 | type | id=inputSearchBar | course
+    # # type in search bar fill
+    # self.driver.find_element(By.ID, "inputSearchBar").send_keys("course")
+    # # 7 | click | id=inputClickOnSearchItem | 
+    # # click on search icon
+    # self.driver.find_element(By.ID, "inputClickOnSearchItem").click()
+    # # 8 | click | id=inputHomeIcon | 
     # # back to home page
-    self.driver.find_element(By.ID, "inputHomeIcon").click()
-    # # 13 | click | id=inputViewTeamDetailsButton | 
-    # # In meet the team on click on view more button
-    self.driver.find_element(By.ID, "inputViewTeamDetailsButton").click()
-    # # 14 | click | id=inputHomeIcon | 
-    # # back to home page
-    self.driver.find_element(By.ID, "inputHomeIcon").click()
-    # # 15 | mouseOver | id=inputHomeIcon | 
-    element = self.driver.find_element(By.ID, "inputHomeIcon")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element).perform()
-    # 16 | mouseOut | css=#inputHomeIcon > img | 
-    element = self.driver.find_element(By.CSS_SELECTOR, "body")
-    actions = ActionChains(self.driver)
-    # actions.move_to_element(element, 0, 0).perform()
+    # self.driver.find_element(By.ID, "inputHomeIcon").click()
     
-    actions.move_to_element(element).perform()
+    # time.sleep(5)
+    
+    # # 9 | click | id=inputViewAllCoursesButton | 
+    # # click on view all in course
+    # self.driver.find_element(By.ID, "inputViewAllCoursesButton").click()
+    # # 10 | click | id=inputHomeIcon | 
+    # # back to home page
+    # self.driver.find_element(By.ID, "inputHomeIcon").click()
+    # # 11 | click | id=inputViewCourseDetails_1 | 
+    
+    # time.sleep(5)
+    
+    # # click on view detail in course button
+    # self.driver.find_element(By.ID, "inputViewCourseDetails_1").click()
+    # # # 12 | click | id=inputHomeIcon | 
+    # # # back to home page
+    # self.driver.find_element(By.ID, "inputHomeIcon").click()
+    # # # 13 | click | id=inputViewTeamDetailsButton | 
+    # # # In meet the team on click on view more button
+    # self.driver.find_element(By.ID, "inputViewTeamDetailsButton").click()
+    # # # 14 | click | id=inputHomeIcon | 
+    # # # back to home page
+    # self.driver.find_element(By.ID, "inputHomeIcon").click()
+    # # # 15 | mouseOver | id=inputHomeIcon | 
+    # element = self.driver.find_element(By.ID, "inputHomeIcon")
+    # actions = ActionChains(self.driver)
+    # actions.move_to_element(element).perform()
+    # # 16 | mouseOut | css=#inputHomeIcon > img | 
+    # element = self.driver.find_element(By.CSS_SELECTOR, "body")
+    # actions = ActionChains(self.driver)
+    # # actions.move_to_element(element, 0, 0).perform()
+    
+    # actions.move_to_element(element).perform()
     
     
-    # # # 17 | click | css=#inputViewCourse_Math > span | 
-    # click on Math button in footer
-    self.driver.find_element(By.CSS_SELECTOR, "#inputViewCourse_Math > span").click()
-    # 18 | click | id=inputHomeIcon | 
-    # back to home page
-    self.driver.find_element(By.ID, "inputHomeIcon").click()
-    # # 19 | click | css=#inputViewAbhyasSection_About\ us > span | 
-    # # click on Abhyas button
-    self.driver.find_element(By.CSS_SELECTOR, "#inputViewAbhyasSection_About\\ us > span").click()
-    # # 20 | click | id=inputHomeIcon | 
+    # # # # 17 | click | css=#inputViewCourse_Math > span | 
+    # # click on Math button in footer
+    # self.driver.find_element(By.CSS_SELECTOR, "#inputViewCourse_Math > span").click()
+    # # 18 | click | id=inputHomeIcon | 
     # # back to home page
-    self.driver.find_element(By.ID, "inputHomeIcon").click()
-    # # 21 | click | css=#inputViewTermsSection_Privacy\ policy > span | 
-    # # click on privacy button
-    self.driver.find_element(By.CSS_SELECTOR, "#inputViewTermsSection_Privacy\\ policy > span").click()
-    # # 22 | click | id=inputHomeIcon | 
-    # # back to home page
-    self.driver.find_element(By.ID, "inputHomeIcon").click()
-    # # 23 | click | id=inputSignUpButton | 
-    self.driver.find_element(By.ID, "inputSignUpButton").click()
-    # # 24 | click | id=inputSignUpButton | 
-    self.driver.find_element(By.ID, "inputSignUpButton").click()
-    # # 25 | doubleClick | id=inputSignUpButton | 
-    # #  double click on sign up button  
-    element = self.driver.find_element(By.ID, "inputSignUpButton")
-    actions = ActionChains(self.driver)
-    actions.double_click(element).perform()
-    # # 26 | click | css=.tf-v1-close | 
-    # # This will click on 'X' mark
-    self.driver.find_element(By.CSS_SELECTOR, ".tf-v1-close").click()
-    # # 27 | click | id=inputSignInButton | 
-    # # click on sign button
-    self.driver.find_element(By.ID, "inputSignInButton").click()
+    # self.driver.find_element(By.ID, "inputHomeIcon").click()
+    # # # 19 | click | css=#inputViewAbhyasSection_About\ us > span | 
+    # # # click on Abhyas button
+    # self.driver.find_element(By.CSS_SELECTOR, "#inputViewAbhyasSection_About\\ us > span").click()
+    # # # 20 | click | id=inputHomeIcon | 
+    # # # back to home page
+    # self.driver.find_element(By.ID, "inputHomeIcon").click()
+    # # # 21 | click | css=#inputViewTermsSection_Privacy\ policy > span | 
+    # # # click on privacy button
+    # self.driver.find_element(By.CSS_SELECTOR, "#inputViewTermsSection_Privacy\\ policy > span").click()
+    # # # 22 | click | id=inputHomeIcon | 
+    # # # back to home page
+    # self.driver.find_element(By.ID, "inputHomeIcon").click()
+    # # # 23 | click | id=inputSignUpButton | 
+    # self.driver.find_element(By.ID, "inputSignUpButton").click()
+    # # # 24 | click | id=inputSignUpButton | 
+    # self.driver.find_element(By.ID, "inputSignUpButton").click()
+    # # # 25 | doubleClick | id=inputSignUpButton | 
+    # # #  double click on sign up button  
+    # element = self.driver.find_element(By.ID, "inputSignUpButton")
+    # actions = ActionChains(self.driver)
+    # actions.double_click(element).perform()
+    # # # 26 | click | css=.tf-v1-close | 
+    # # # This will click on 'X' mark
+    # self.driver.find_element(By.CSS_SELECTOR, ".tf-v1-close").click()
+    # # # 27 | click | id=inputSignInButton | 
+    # # # click on sign button
+    # self.driver.find_element(By.ID, "inputSignInButton").click()
   
