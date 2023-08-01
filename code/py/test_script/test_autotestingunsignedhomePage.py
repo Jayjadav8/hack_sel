@@ -56,55 +56,98 @@ class TestAutotestingunsignedhomePage():
     # Step # | name | target | value
     # 1 | open | / | 
     self.driver.get("https://qbrow.rasree.com/")
+
+    # # 2 | setWindowSize | 1440x804 | 
+    self.driver.set_window_size(1440, 804)
+
+    screenshot_filename = f"{test_name}_screenshot_homepage.png"
+    screenshot_path = os.path.join(test_directory, screenshot_filename)
+    
     expected_title = "Home | Rasree"
 
     assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
         does not match expected title '{expected_title}'"
 
-    # # 2 | setWindowSize | 1440x804 | 
-    self.driver.set_window_size(1440, 804)
-
 
     # # 3 | click | id=inputExploreBtn | 
     # # click on explore
     self.driver.find_element(By.ID, "inputExploreBtn").click()
-    screenshot_filename = f"{test_name}_screenshot_explorepage.png"
+    screenshot_filename = f"{test_name}_screenshot_explore.png"
     screenshot_path = os.path.join(test_directory, screenshot_filename)
     self.driver.get_screenshot_as_file(screenshot_path)
+
+    expected_title = "Explore | Rasree"
+
+    assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
+        does not match expected title '{expected_title}'"
+
 
     # # 4 | click | id=inputHomeIcon | 
     # # back to home page
     self.driver.find_element(By.ID, "inputHomeIcon").click()
+    expected_title = "Home | Rasree"
+
+    assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
+        does not match expected title '{expected_title}'"
+    
+    # 5 | click | id=inputSearchBar | 
+    # click on search bar text fill
+    self.driver.find_element(By.ID, "inputSearchBar").click()
+
+    # # 6 | type | id=inputSearchBar | course
+    # # # type in search bar fill
+    self.driver.find_element(By.ID, "inputSearchBar").send_keys("course")
+
+    search_text = self.driver.find_element(By.ID, "inputSearchBar").get_attribute("value")
+    assert search_text == "course", f"Search bar text is '{search_text}', expected 'course'"
+
+    # 7 | click | id=inputClickOnSearchItem | 
+    # click on search icon
+    self.driver.find_element(By.ID, "inputClickOnSearchItem").click()
+    expected_explore_page_url = "https://qbrow.rasree.com/browseSearch?search_text=course"
+    assert expected_explore_page_url == self.driver.current_url, f"URL '{self.driver.current_url}'\
+        does not match expected URL '{expected_explore_page_url}'"
+
+  
+    # 8 | click | id=inputHomeIcon | 
+    # back to home page
+    self.driver.find_element(By.ID, "inputHomeIcon").click()
+    expected_title = "Home | Rasree"
+
+    assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
+        does not match expected title '{expected_title}'"
+    
+    time.sleep(5)
+    
+    # 9 | click | id=inputViewAllCoursesButton | 
+    # click on view all in course
+    self.driver.find_element(By.ID, "inputViewAllCoursesButton").click()
+    expected_view_all_page_url = "https://qbrow.rasree.com/browseSearch?state=Published&type=courses"
+    assert expected_view_all_page_url == self.driver.current_url, f"URL '{self.driver.current_url}'\
+        does not match expected URL '{expected_view_all_page_url}'"
 
     
-    # # 5 | click | id=inputSearchBar | 
-    # # click on search bar text fill
-    # self.driver.find_element(By.ID, "inputSearchBar").click()
-    # # 6 | type | id=inputSearchBar | course
-    # # type in search bar fill
-    # self.driver.find_element(By.ID, "inputSearchBar").send_keys("course")
-    # # 7 | click | id=inputClickOnSearchItem | 
-    # # click on search icon
-    # self.driver.find_element(By.ID, "inputClickOnSearchItem").click()
-    # # 8 | click | id=inputHomeIcon | 
-    # # back to home page
-    # self.driver.find_element(By.ID, "inputHomeIcon").click()
+    # 10 | click | id=inputHomeIcon | 
+    # back to home page
+    self.driver.find_element(By.ID, "inputHomeIcon").click()
+    expected_title = "Home | Rasree"
+
+    assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
+        does not match expected title '{expected_title}'"
     
-    # time.sleep(5)
+      
+    # 11 | click | id=inputViewCourseDetails_1 | 
     
-    # # 9 | click | id=inputViewAllCoursesButton | 
-    # # click on view all in course
-    # self.driver.find_element(By.ID, "inputViewAllCoursesButton").click()
-    # # 10 | click | id=inputHomeIcon | 
-    # # back to home page
-    # self.driver.find_element(By.ID, "inputHomeIcon").click()
-    # # 11 | click | id=inputViewCourseDetails_1 | 
-    
-    # time.sleep(5)
+    time.sleep(5)
     
     # # click on view detail in course button
-    # self.driver.find_element(By.ID, "inputViewCourseDetails_1").click()
-    # # # 12 | click | id=inputHomeIcon | 
+    self.driver.find_element(By.ID, "inputViewCourseDetails_1").click()
+    expected_view_all_page_url = "https://qbrow.rasree.com/course/1"
+    assert expected_view_all_page_url == self.driver.current_url, f"URL '{self.driver.current_url}'\
+        does not match expected URL '{expected_view_all_page_url}'"
+
+
+    # 12 | click | id=inputHomeIcon | 
     # # # back to home page
     # self.driver.find_element(By.ID, "inputHomeIcon").click()
     # # # 13 | click | id=inputViewTeamDetailsButton | 
