@@ -1,6 +1,6 @@
-from test_script.test_unregistered_id import TestUnregisteredUID 
+from code.py.test_scripts.test_unregistered_id import TestUnregisteredUID 
 from test_script.test_p1 import TestP1
-from test_script.test_page2Loginpage import TestPage2Loginpage
+from code.py.test_scripts.test_page2Loginpage import TestPage2Loginpage
 # from test_script.test_page3browseSearchpagewithoutlogin import TestPage3browseSearchpagewithoutlogin
 from test_script.test_autotestingunsignedhomePage import TestAutotestingunsignedhomePage
 
