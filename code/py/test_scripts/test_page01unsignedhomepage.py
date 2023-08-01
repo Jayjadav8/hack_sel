@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
-
+import os
 
 class TestPage01unsignedhomepage():
   '''
@@ -28,10 +28,29 @@ class TestPage01unsignedhomepage():
     '''
     self.driver.quit()
 
-  def capture_screenshot(self, step_name):
-          screenshot_path = f"screenshots/{step_name}.png"
-          self.driver.get_screenshot_as_file(screenshot_path)
   
+
+  def capture_screenshot(self, step_name):
+    ''' 
+    Captures a screenshot of the current browser window and 
+    saves it with the given step_name.
+    Input attribute is  step_name: The name of the step for which the screenshot is captured.
+     '''
+      
+    filename = os.path.basename(__file__)
+    # Remove the file extension from the filename
+    test_name = os.path.splitext(filename)[0]
+
+    # Create a directory for storing the screenshots if it doesn't exist
+    screenshots_directory = "../screenshot"
+    test_directory = os.path.join(screenshots_directory, test_name)
+    if not os.path.exists(test_directory):
+        os.makedirs(test_directory)
+    screenshot_path = os.path.join(test_directory, f"{step_name}.png")
+    self.driver.get_screenshot_as_file(screenshot_path)
+
+
+
   def test_page01unsignedhomepage(self):
     '''
     - Test name: page_01_unsignedhome_page
@@ -53,7 +72,7 @@ class TestPage01unsignedhomepage():
     expected_title = "Home | Rasree"
     assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
         does not match expected title '{expected_title}'"
-    self.capture_screenshot("Step_1_Homepage")
+    self.capture_screenshot("Step_2_Homepage")
 
     # 3 | click | id=inputExploreBtn | 
     # click on explore button 
@@ -62,7 +81,7 @@ class TestPage01unsignedhomepage():
     expected_title = "Explore | Rasree"
     assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
         does not match expected title '{expected_title}'"
-
+    self.capture_screenshot("Step_3_ExplorePage")
 
     # 4 | click | id=inputHomeIcon | 
     # click on RASREE icon for back.
@@ -71,6 +90,7 @@ class TestPage01unsignedhomepage():
     expected_title = "Home | Rasree"
     assert expected_title in self.driver.title, f"Page title '{self.driver.title}'\
         does not match expected title '{expected_title}'"
+    self.capture_screenshot("Step_4_HomepageAfterBack")
 
     # 5 | click | id=inputSearchBar | 
     # click on input search bar
@@ -84,7 +104,7 @@ class TestPage01unsignedhomepage():
 
     course_search_text = self.driver.find_element(By.ID, "inputSearchBar").get_attribute("value")
     assert course_search_text == "course", f"Search bar text is '{course_search_text}', expected 'course'"
-
+    self.capture_screenshot("Step_6_SearchBarWithText")
 
     # 7 | click | id=inputClickOnSearchItem | 
     # click on search icon
@@ -93,7 +113,8 @@ class TestPage01unsignedhomepage():
     expected_course_search_page_url = "https://qbrow.rasree.com/browseSearch?search_text=course"
     assert expected_course_search_page_url == self.driver.current_url, f"URL '{self.driver.current_url}'\
         does not match expected URL '{expected_course_search_page_url}'"
-     
+    self.capture_screenshot("Step_7_CourseSearchPage")
+    
     # 8 | click | id=inputHomeIcon | 
     # click on RASREE icon
     self.driver.find_element(By.ID, "inputHomeIcon").click()
