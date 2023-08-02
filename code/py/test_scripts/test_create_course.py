@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
-
+import os
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 
@@ -108,7 +108,7 @@ class TestCreateCourseTest():
     self.driver.find_element(By.ID, "inputBasicInfoCourseTitle").send_keys("Org_Public_1_Maths_CBSE_10th")
 
     course_title_text = self.driver.find_element(By.ID, "inputBasicInfoCourseTitle").get_attribute("value")
-    assert course_title_text == "Org_Public_1_Maths_CBSE_10th", f"Search bar text is '{course_title_text}', expected 'Org_Public_1_Maths_CBSE_10th'"
+    assert course_title_text == "Org_Public_1_Maths_CBSE_10th", f" Title text is '{course_title_text}', expected 'Org_Public_1_Maths_CBSE_10th'"
 
 
     # 13 | click | id=inputBasicInfoCourseDescription | 
@@ -117,10 +117,10 @@ class TestCreateCourseTest():
 
     # 14 | type | id=inputBasicInfoCourseDescription | Basics of Algerbra
     # enter course description
-    self.driver.find_element(By.ID, "inputBasicInfoCourseDescription").send_keys("Basics of Algerbra")
+    self.driver.find_element(By.ID, "inputBasicInfoCourseDescription").send_keys("Basics of Algebra")
 
     course_desc_text = self.driver.find_element(By.ID, "inputBasicInfoCourseDescription").get_attribute("value")
-    assert course_desc_text == "Basics of Algerbra", f"Search bar text is '{course_desc_text}', expected 'Basics of Algerbra'"
+    assert course_desc_text == "Basics of Algebra", f" Description text is '{course_desc_text}', expected 'Basics of Algebra'"
 
 
     # 15 | click | id=inputBasicInfoCourseSubject | 
@@ -251,93 +251,121 @@ class TestCreateCourseTest():
     # # 48 | type | id=inputScheduleInfoEndDate | 2024-08-06
     # # enter end date 2024-08-04
     # # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").send_keys("2024-08-06")
-    # # 49 | click | id=spanDiv | 
-    # # click on check box of monday
-    # self.driver.find_element(By.ID, "spanDiv").click()
-    # # 50 | click | css=#inputWeekname_Wednesday > #spanDiv | 
-    # # click on check box of  wednesday
-    # self.driver.find_element(By.CSS_SELECTOR, "#inputWeekname_Wednesday > #spanDiv").click()
-    # # 51 | click | css=#inputWeekname_Friday > #spanDiv | 
-    # # click on checkbox of friday
-    # self.driver.find_element(By.CSS_SELECTOR, "#inputWeekname_Friday > #spanDiv").click()
-    # # 52 | click | id=inputDefaultStartTime | 
-    # # click on default start time
-    # self.driver.find_element(By.ID, "inputDefaultStartTime").click()
-    # # 53 | click | id=inputDefaultStartTime | 
-    # # click on default start timer
-    # self.driver.find_element(By.ID, "inputDefaultStartTime").click()
-    # # 54 | type | id=inputDefaultStartTime | 12:00
-    # # type 12:00
-    # self.driver.find_element(By.ID, "inputDefaultStartTime").send_keys("12:00")
-    # # 55 | click | id=inputDefaultSessionDuration | 
-    # # click on session duration
-    # self.driver.find_element(By.ID, "inputDefaultSessionDuration").click()
-    # # 56 | mouseDownAt | id=inputDefaultSessionDuration | 44.90625,20.03125
-    # element = self.driver.find_element(By.ID, "inputDefaultSessionDuration")
-    # actions = ActionChains(self.driver)
-    # actions.move_to_element(element).click_and_hold().perform()
-    # # 57 | mouseMoveAt | id=inputDefaultSessionDuration | 44.90625,20.03125
-    # element = self.driver.find_element(By.ID, "inputDefaultSessionDuration")
-    # actions = ActionChains(self.driver)
-    # actions.move_to_element(element).perform()
-    # # 58 | mouseUpAt | id=inputDefaultSessionDuration | 44.90625,20.03125
-    # element = self.driver.find_element(By.ID, "inputDefaultSessionDuration")
-    # actions = ActionChains(self.driver)
-    # actions.move_to_element(element).release().perform()
-    # # 59 | click | id=inputDefaultSessionDuration | 
-    # # click on input box of session duration
-    # self.driver.find_element(By.ID, "inputDefaultSessionDuration").click()
-    # # 60 | click | id=inputDefaultSessionDuration | 
-    # # click on default session duration
-    # self.driver.find_element(By.ID, "inputDefaultSessionDuration").click()
-    # # 61 | type | id=inputDefaultSessionDuration | 01:00
-    # # enter 01:00
-    # self.driver.find_element(By.ID, "inputDefaultSessionDuration").send_keys("01:00")
-    # # 62 | click | id=inputSaveScheduleInfo | 
-    # # click on continue button
+
+    # 49 | click |
+    # click on check box of monday
+    time.sleep(5)
+    self.driver.find_element(By.ID, "inputWeekname_Monday").click()
+    
+    # monday_checkbox = self.driver.find_element(By.XPATH, "//label[@id='inputWeekname_Monday']//span[@id='spanDiv']")
+    # monday_selected = monday_checkbox.is_selected()
+    # print("*****",monday_selected)
+    # assert not monday_selected , "The Monday checkbox is not selected after clicking on it"
+
+    # 50 | click on check box of  wednesday
+    self.driver.find_element(By.ID, "inputWeekname_Wednesday").click()
+
+
+    # 51 | click on checkbox of friday
+    self.driver.find_element(By.ID, "inputWeekname_Friday").click()
+
+
+    # 53 | click | id=inputDefaultStartTime | 
+    # click on default start timer
+    self.driver.find_element(By.ID, "inputDefaultStartTime").click()
+
+    # 54 | type | id=inputDefaultStartTime | 12:00
+    self.driver.find_element(By.ID, "inputDefaultStartTime").send_keys("12:00")
+
+    input_default_start_time_text = self.driver.find_element(By.ID, "inputDefaultStartTime").get_attribute("value")
+    assert input_default_start_time_text == "12:00", f" start time  text is '{input_default_start_time_text}', expected '12:00'"
+
+    # 55 | click | id=inputDefaultSessionDuration | 
+    # click on session duration
+    self.driver.find_element(By.ID, "inputDefaultSessionDuration").click()
+
+    # 54 | type | id=inputDefaultSessionDuration | 01:00
+    self.driver.find_element(By.ID, "inputDefaultSessionDuration").send_keys("01:00")
+
+    input_default_session_duration_text = self.driver.find_element(By.ID, "inputDefaultSessionDuration").get_attribute("value")
+    assert input_default_session_duration_text == "01:00", f" session duration  text is '{input_default_session_duration_text}', expected '01:00'"
+
+    # 62 | click | id=inputSaveScheduleInfo | 
+    # click on continue button
     self.driver.find_element(By.ID, "inputSaveScheduleInfo").click()
-    # # 63 | click | id=inputMinimumStudent | 
-    # # click on minimum student
-    self.driver.find_element(By.ID, "inputMinimumStudent").click()
-    # # 64 | type | id=inputMinimumStudent | 2
-    # # enter minimum student 2
+
+    # 63 | click | id=inputMinimumStudent | 
+    # click on minimum student
+    wait.until(EC.element_to_be_clickable((By.ID,"inputMinimumStudent"))).click() 
     self.driver.find_element(By.ID, "inputMinimumStudent").send_keys("2")
-    # # 65 | click | id=inputMaximumStudent | 
-    # # click on maximum student
-    self.driver.find_element(By.ID, "inputMaximumStudent").click()
-    # # 66 | type | id=inputMaximumStudent | 10
-    # # enter maximum student 210
+
+    minimum_student_text = self.driver.find_element(By.ID, "inputMinimumStudent").get_attribute("value")
+    assert minimum_student_text == "2", f" minimum student text is '{minimum_student_text}', expected '2'"
+
+    # 65 | click | id=inputMaximumStudent | 
+    # click on maximum student
+
     self.driver.find_element(By.ID, "inputMaximumStudent").send_keys("10")
+    maximum_student_text = self.driver.find_element(By.ID, "inputMaximumStudent").get_attribute("value")
+    assert maximum_student_text == "10", f" maximum students text is '{maximum_student_text}', expected '10'"
+
+
     # # 67 | click | id=inputCoursePayment_1 | 
     # # click on course payment
     self.driver.find_element(By.ID, "inputCoursePayment_1").click()
-    # # 68 | click | id=inputCurrency | 
-    # # click on input currency
-    self.driver.find_element(By.ID, "inputCurrency").click()
-    # # 69 | select | id=inputCurrency | label=United States Dollar (USD)
-    # select input currency USD
-    dropdown = self.driver.find_element(By.ID, "inputCurrency")
-    dropdown.find_element(By.XPATH, "//option[. = 'United States Dollar (USD)']").click()
-    # # 70 | click | id=inputCourseFees | 
-    # # click on course fee
-    # self.driver.find_element(By.ID, "inputCourseFees").click()
-    # # 71 | click | id=inputCurrency | 
-    # # click on input currency 
-    # self.driver.find_element(By.ID, "inputCurrency").click()
-    # # 72 | select | id=inputCurrency | label=Indian Rupee (INR)
-    # # enter Indian Rupee
-    # dropdown = self.driver.find_element(By.ID, "inputCurrency")
-    # dropdown.find_element(By.XPATH, "//option[. = 'Indian Rupee (INR)']").click()
-    # # 73 | click | id=inputCourseFees | 
-    # # click on course fee
-    # self.driver.find_element(By.ID, "inputCourseFees").click()
-    # # 74 | type | id=inputCourseFees | 2000
-    # # type course fee 2000
-    # self.driver.find_element(By.ID, "inputCourseFees").send_keys("2000")
-    # # 75 | click | id=inputSavePriceEnrollInfo | 
-    # # click on continue button
-    # self.driver.find_element(By.ID, "inputSavePriceEnrollInfo").click()
-    # # # 76 | click | id=inputSaveCourseAsReadyForApproval | 
+    # TODO assert
+
+    # 69 | select | id=inputCurrency | label=Indian Rupee (INR)
+    # select input currency Indian Rupee (INR)
+    currency_dropdown = self.driver.find_element(By.ID, "inputCurrency")
+    select_currency_from_drop_down = Select(currency_dropdown)
+    select_currency_from_drop_down.select_by_value("Indian Rupee (INR)")
+
+    selected_currency_option = select_currency_from_drop_down.first_selected_option
+    assert selected_currency_option.text == "Indian Rupee (INR)", f"Expected 'Indian Rupee (INR)' to be selected, but actual selection is '{selected_grade_option.text}'"
+
+
+    # 74 | type | id=inputCourseFees | 2000
+    # type course fee 2000
+    self.driver.find_element(By.ID, "inputCourseFees").send_keys("2000")
+
+    course_fees_text = self.driver.find_element(By.ID, "inputCourseFees").get_attribute("value")
+    assert course_fees_text == "2000", f" course fees  text is '{course_fees_text}', expected '2000'"
+
+    # 75 | click | id=inputSavePriceEnrollInfo | 
+    # click on continue button
+    self.driver.find_element(By.ID, "inputSavePriceEnrollInfo").click()
+
+  #  click on upload another file.
+    wait.until(EC.element_to_be_clickable((By.ID,"inputUploadFileButton"))).click() 
+    time.sleep(5)
+
+    # Create sample file
+    file_path = "sample.txt"  # Assuming the file is in the current working directory
+    with open(file_path, "w") as f:
+        list_sample = [1, 2, 3, 4, 5]
+        for item in list_sample:
+            f.write(str(item) + "\n")
+
+    # Convert the relative file path to an absolute file path
+    absolute_file_path = os.path.abspath(file_path)
+
+  #  click on input select file and upload file
+    file_upload_button = self.driver.find_element(By.ID, "inputSelectFile1")
+    file_upload_button.send_keys(absolute_file_path)
+
+
+  # check if file got uploaded , then file title is same as value in  document_title_text
+    document_title_text = self.driver.find_element(By.ID, "additionalDocTitleID_1").get_attribute("value")
+    assert document_title_text == file_path, f" document title text is '{document_title_text}', expected {file_path}"
+
+
+    time.sleep(5)
+
+
+
+
+    # 76 | click | id=inputSaveCourseAsReadyForApproval | 
     # # # Click on  save and  submit for approval.
     # # self.driver.find_element(By.ID, "inputSaveCourseAsReadyForApproval").click()
   
