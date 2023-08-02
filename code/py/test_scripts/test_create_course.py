@@ -173,14 +173,16 @@ class TestCreateCourseTest():
 
     # 27 | click | id=inputSaveBasicInfo | 
     # click on save basic info
-    self.driver.find_element(By.ID, "inputSaveBasicInfo").click()
+    # self.driver.find_element(By.ID, "inputSaveBasicInfo").click()
 
-    # 29 | type | id=inputScheduleInfoStartDate | 2023-08-04
+    # # 29 | type | id=inputScheduleInfoStartDate | 2023-08-04
     # # click on start date
     # time.sleep(6)
-    # start_date_input = self.driver.find_element(By.ID, "inputScheduleInfoStartDate").click()
+    # # start_date_input = self.driver.find_element(By.ID, "inputScheduleInfoStartDate").click()
+
+
     # time.sleep(6)
-    # start_date_input.send_keys("04/08/2022")
+    # start_date_input.send_keys("04-08-2022")
     # print("****",start_date_input)
     # expected_start_date = "2023-08-04"
     # assert start_date_input.get_attribute("value") == expected_start_date, f"Entered start date '{start_date_input.get_attribute('value')}' does not match expected start date '{expected_start_date}'"
@@ -224,33 +226,35 @@ class TestCreateCourseTest():
     # # 39 | click | id=inputScheduleInfoEndDate | 
     # # click on end date
     # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").click()
-    # # 40 | click | id=inputScheduleInfoEndDate | 
+
+
+    # 40 | click | id=inputScheduleInfoEndDate | 
     # # click on end date
     # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").click()
     # # 41 | type | id=inputScheduleInfoEndDate | 2023-08-06
     # # type end date 2023-08-06
     # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").send_keys("2023-08-06")
-    # # 42 | click | id=inputScheduleInfoEndDate | 
-    # # click on end date
+    # # # 42 | click | id=inputScheduleInfoEndDate | 
+    # # # click on end date
     # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").click()
-    # # 43 | click | id=inputScheduleInfoEndDate | 
-    # # click on end date
+    # # # 43 | click | id=inputScheduleInfoEndDate | 
+    # # # click on end date
     # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").click()
-    # # 44 | click | id=inputScheduleInfoEndDate | 
-    # # click on end date
+    # # # 44 | click | id=inputScheduleInfoEndDate | 
+    # # # click on end date
     # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").click()
-    # # 45 | type | id=inputScheduleInfoEndDate | 0002-08-06
+    # # # 45 | type | id=inputScheduleInfoEndDate | 0002-08-06
     # # type end date 0020-08-06
     # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").send_keys("0002-08-06")
-    # # 46 | type | id=inputScheduleInfoEndDate | 0020-08-06
+    # # # 46 | type | id=inputScheduleInfoEndDate | 0020-08-06
     # # type end date 0020-08-06
     # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").send_keys("0020-08-06")
-    # # 47 | type | id=inputScheduleInfoEndDate | 0202-08-06
+    # # # 47 | type | id=inputScheduleInfoEndDate | 0202-08-06
     # # type end date 0202-08-06
-    # # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").send_keys("0202-08-06")
-    # # 48 | type | id=inputScheduleInfoEndDate | 2024-08-06
-    # # enter end date 2024-08-04
-    # # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").send_keys("2024-08-06")
+    # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").send_keys("0202-08-06")
+    # # # 48 | type | id=inputScheduleInfoEndDate | 2024-08-06
+    # # # enter end date 2024-08-04
+    # self.driver.find_element(By.ID, "inputScheduleInfoEndDate").send_keys("2024-08-06")
 
     # 49 | click |
     # click on check box of monday
@@ -338,7 +342,6 @@ class TestCreateCourseTest():
 
   #  click on upload another file.
     wait.until(EC.element_to_be_clickable((By.ID,"inputUploadFileButton"))).click() 
-    time.sleep(5)
 
     # Create sample file
     file_path = "sample.txt"  # Assuming the file is in the current working directory
@@ -360,12 +363,7 @@ class TestCreateCourseTest():
     assert document_title_text == file_path, f" document title text is '{document_title_text}', expected {file_path}"
 
 
-    time.sleep(5)
-
-
-
-
     # 76 | click | id=inputSaveCourseAsReadyForApproval | 
-    # # # Click on  save and  submit for approval.
-    # # self.driver.find_element(By.ID, "inputSaveCourseAsReadyForApproval").click()
+    # Click on  save and  submit for approval.
+    # self.driver.find_element(By.ID, "inputSaveCourseAsReadyForApproval").click()
   
