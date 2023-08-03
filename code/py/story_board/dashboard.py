@@ -32,8 +32,8 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
         scr_shot_needed = bool(self.story.step_04_02.screenshot_needed)
         wait=str(self.story.step_04_02.wait.type)
         duration= int(self.story.step_04_02.wait.duration)
-        page_checks= self.story.step_04_02.check_elements
-        exit_element=self.story.step_04_02.exit_element
+        page_checks= (self.story.step_04_02.check_elements).to_dict()
+        exit_element=(self.story.step_04_02.exit_element).to_dict()
         screen_shot_path = self.story.screenshot_path
         screen_shot_name = self.story.step_04_02.screenshot_name
         sl_time= self.story.sl_time
@@ -43,8 +43,8 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
             "scr_shot_needed": bool(self.story.step_04_02.screenshot_needed),
             "wait": str(self.story.step_04_02.wait.type),
             "duration": int(self.story.step_04_02.wait.duration),
-            "page_checks": self.story.step_04_02.check_elements,
-            "exit_element": self.story.step_04_02.exit_element,
+            "page_checks":  page_checks,
+            "exit_element": exit_element,
             "screen_shot_path": self.story.screenshot_path,
             "screen_shot_name": self.story.step_04_02.screenshot_name,
             "sl_time": self.story.sl_time
@@ -53,7 +53,6 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
         # Print the dictionary with variable names and their values
         for key, value in print_dict.items():
             print(f"{key}: {value}")
-
 
 
 
