@@ -60,16 +60,17 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
 
 
         # Checking different elements as per requirements.
-
+        sample_list = []
+        comic_out_content_dict1 ={}
         # Step_01_03 : Clicks on the 'inputExploreBtn' element on the page and verifies the page title.
-        # comic_out_content_dict["step_01_03"] = inputExploreBtn(self)
-
+        comic_out_content_dict1 = inputExploreBtn(self)
+        sample_list.append(comic_out_content_dict1)
 
     
         # Creating comic_out yaml file
         self.write_comic_out(comic_out_file, comic_out_content_dict)
         
-
+        output_comic_content(sample_list)
 
         # Creating comic_out md file 
         comic_out_path= comic_dashboard_data["comic_out_path"]

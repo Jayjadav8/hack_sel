@@ -2,7 +2,7 @@
 
 
 
-#  unsigned home Page story  18:49:45
+#  unsigned home Page story  22:10:37
   
 
 ##  step_04_02 : 
@@ -16,7 +16,7 @@ step_name:  User visit unsigned page of Rasree
   
 image: 01_01.png  
   
-render_time: 1.962  
+render_time: 1.536  
   
 e1_details: an element with id inputExploreBtn of type button with text Explore   
   
