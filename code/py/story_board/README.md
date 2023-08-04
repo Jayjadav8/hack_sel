@@ -6,3 +6,6 @@
 ```
 $  python dashboard.py comic_in.yaml
 ```
+
+
+options required to maximize

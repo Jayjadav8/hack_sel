@@ -22,6 +22,10 @@ from zoneinfo import ZoneInfo
 from datetime import datetime, timedelta
 from mdutils.mdutils import MdUtils
 
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 
 class BrowserAppSteps:
@@ -73,8 +77,11 @@ class BrowserAppSteps:
             browser_server (str): The server URL for the browser.
             duration (int): The duration of the app steps.
         '''
+        options = Options()
 
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+        # self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(duration)
 
         if self.driver is None:
@@ -133,6 +140,8 @@ class BrowserAppSteps:
 
         try:
             self.driver.get(url)
+            self.driver.set_window_size(1440, 804)
+    
             page_load_time= self.web_page_load_time()
 
         except TimeoutException as e:
@@ -154,7 +163,6 @@ class BrowserAppSteps:
                 step_error_list, screenshot_path,
                 screen_shot_name, wait_element_id)
         
-        print("visit",check_element_present_result)
         return check_element_present_result, page_load_time, all_step_error_list
 
 
@@ -231,24 +239,20 @@ class BrowserAppSteps:
             if 'id' not in element_data:
                 step_error += f"Element {element_key}: 'id' key is missing."
                 can_proceed_ahead= False
-                print("Error",step_error)
 
             elif not element_data['id'].strip():
                 step_error += f"Element {element_key}: 'id' value is an empty string."
                 can_proceed_ahead= False
-                print("Error",step_error)
 
             try:
                 wait = WebDriverWait(self.driver, implicit_wait_duration)
                 wait.until(EC.presence_of_element_located((By.ID,wait_element_id)))
                 check_element_present_result[element_key] ={}
                 check_element_present_result[element_key]["found"] = True
-                print("load222222222",check_element_present_result)
                     
             except NoSuchElementException as e:
                 step_error+=f"FATAL: No Element named {element_key} found\n"
                 can_proceed_ahead= False
-                print(step_error)
 
 
             except Exception as e:
@@ -377,8 +381,7 @@ class BrowserAppSteps:
         
         step_error= ""
         step_error_list=""
-        print("***",current_page_elements)
-        print("&&&&",check_element_present_result)
+
         try:
             comic_out_content_response_dict={}
             comic_out_content_response_dict['step_name']= step_name

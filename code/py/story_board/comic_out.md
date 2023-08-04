@@ -2,7 +2,7 @@
 
 
 
-#  unsigned home Page story  13:02:58
+#  unsigned home Page story  15:02:35
   
 
 ##  step_04_02 : 
@@ -16,7 +16,7 @@ step_name:  User visit unsigned page of browser app
   
 image: 04_02.png  
   
-render_time: 10.961  
+render_time: 1.06  
   
 e1_details: an element with id inputExploreBtn of type h1 with text Welcome to Rasree App   
   
