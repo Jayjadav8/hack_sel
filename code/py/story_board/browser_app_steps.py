@@ -107,25 +107,24 @@ class BrowserAppSteps:
         return float(domComplete - responseStart) / 1000
 
 
-    def visit_page(self, url: str, wait_type: str, implicit_wait_duration: int, \
-            scr_shot_needed: bool, current_page_check_elements: dict, page_exit_element: dict, 
-        screenshot_path: str= None, screen_shot_name: str=None, wait_element_id: str = None):
+
+    def visit_page(self,step_input_data:dict, wait_element_id: str = None):
         '''
         Visits a page in the browser app, checks required elements' presence,
           and takes screenshots if specified.
         
         Args:
-            url (str): The URL of the page to visit in the browser app.
-            wait (str): The type of wait to apply during the page load (implicit, explicit, or fluent).
-            duration (int): The duration of the WebDriver wait time in seconds.
-            scr_shot_needed (bool): Whether to take a screenshot (True) or not (False).
-            checks (dict): A dictionary containing elements that should be present on the page.
-            exit_element (dict): A dictionary representing the exit element to proceed to the next page.
-            screenshot_path (str, optional): The path where screenshots will be stored. Default is None.
-            screenshot_name (str, optional): The name of the screenshot. Default is None.
-            wait_el_id (str, optional): The element used to pause the driver to wait for page elements to load.
+            step_input_data(dict) contains fiollowing :
+                url (str): The URL of the page to visit in the browser app.
+                wait (str): The type of wait to apply during the page load (implicit, explicit, or fluent).
+                duration (int): The duration of the WebDriver wait time in seconds.
+                scr_shot_needed (bool): Whether to take a screenshot (True) or not (False).
+                checks (dict): A dictionary containing elements that should be present on the page.
+                exit_element (dict): A dictionary representing the exit element to proceed to the next page.
+                screenshot_path (str, optional): The path where screenshots will be stored. Default is None.
+                screenshot_name (str, optional): The name of the screenshot. Default is None.
+            wait_element_id (str, optional): The element used to pause the driver to wait for page elements to load.
                                         Default is None.
-
             Returns:
                 dict: A dictionary containing check results and other information.
                     - check_result: A dictionary containing the results of the checks performed on the page.
@@ -133,7 +132,9 @@ class BrowserAppSteps:
                     - step_error_list: A string containing any errors that occurred during the page visit and checks.
                 
         '''
-        step_error_list=""
+
+        url = str(step_input_data["url"])
+        step_error_dict= {}
         step_error=""
         can_proceed_ahead=True
         page_load_time = None
@@ -145,31 +146,25 @@ class BrowserAppSteps:
             page_load_time= self.web_page_load_time()
 
         except TimeoutException as e:
-            step_error="FATAL: Page not Found\n"
+            step_error="FATAL: Time out Exception has occur ,Page not Found\n"
             can_proceed_ahead=False
 
         except Exception as e:
-            step_error="FATAL: In visit page, Unhandled Exception, see printed log\n"
+            step_error="FATAL: In visit page, Unhandled Exception has occur \n"
             can_proceed_ahead=False
 
-        # String containing errors if Exception occurs.
-        step_error_list+= step_error
+        # Dictionary containing errors if Exception occurs.
+        step_error_dict["visit_page_function"]= step_error
 
         # Inserting required values to load_page() function
         check_element_present_result, all_step_error_list = \
-            self.load_page(can_proceed_ahead, wait_type,
-                implicit_wait_duration, scr_shot_needed,\
-                current_page_check_elements, page_exit_element,\
-                step_error_list, screenshot_path,
-                screen_shot_name, wait_element_id)
+            self.load_page(can_proceed_ahead, step_input_data,step_error_dict, wait_element_id)
         
         return check_element_present_result, page_load_time, all_step_error_list
 
 
-
-    def load_page(self, can_proceed_ahead: bool, wait_type: str, implicit_wait_duration: int,\
-        scr_shot_needed: bool,current_page_check_elements: dict, page_exit_element: dict, step_error_list:str,
-        screenshot_path: str= None, screen_shot_name: str=None, 
+    def load_page(self,can_proceed_ahead:bool,step_input_data:dict,
+        step_error_dict :dict,\
         wait_element_id: str = None, screenshot_delay: int =2):
 
         '''
@@ -178,29 +173,38 @@ class BrowserAppSteps:
         
         Args:
             proceed (bool): Whether to proceed with the page checks.
-            wait (str): The type of wait to apply during the page load (implicit, explicit, or fluent).
-            duration (int): The duration of the WebDriver wait time in seconds.
-            scr_shot_needed (bool): Whether to take a screenshot (True) or not (False).
-            page_checks (dict): A dictionary containing elements that should be present on the page.
-            exit_element (dict): A dictionary representing the exit element to proceed to the next page.
-            step_error_list (str): A string containing any errors that occurred during the page visit and checks.
-            check_result (dict): A dictionary to store the results of the checks performed on the page.
-            screenshot_path (str, optional): The path where screenshots will be stored. Default is None.
-            screenshot_name (str, optional): The name of the screenshot. Default is None.
-            wait_el_id (str, optional): The element used to pause the driver to wait for page elements to load.
+            step_input_data :dict , contains following keys
+                wait (str): The type of wait to apply during the page load (implicit, explicit, or fluent).
+                duration (int): The duration of the WebDriver wait time in seconds.
+                scr_shot_needed (bool): Whether to take a screenshot (True) or not (False).
+                page_checks (dict): A dictionary containing elements that should be present on the page.
+                exit_element (dict): A dictionary representing the exit element to proceed to the next page.
+                step_error_list (str): A string containing any errors that occurred during the page visit and checks.
+                check_result (dict): A dictionary to store the results of the checks performed on the page.
+                screenshot_path (str, optional): The path where screenshots will be stored. Default is None.
+                screenshot_name (str, optional): The name of the screenshot. Default is None.
+            wait_element_id (str, optional): The element used to pause the driver to wait for page elements to load.
                                         Default is None.
-            sl_time (int, optional): Time in seconds to sleep before taking a screenshot. Default is 2.
+            screenshot_delay (int, optional): Time in seconds to sleep before taking a screenshot. Default is 2.
 
         Returns:
              A Dictionary containing the updated check results dictionary and the updated step_error_list.
     
             '''
 
+        scr_shot_needed = bool(step_input_data["screenshot_needed"])
+        wait_type=str(step_input_data["wait"]["type"])
+        implicit_wait_duration= int(step_input_data["wait"]["duration"])
+        current_page_check_elements= step_input_data["check_elements"]
+        page_exit_element= step_input_data["exit_element"]
+        screen_shot_name = step_input_data["screenshot_name"]
+        screenshot_path = step_input_data["screen_shot_path"]
+
         step_error=""
         check_element_present_result = {}
        
         if not can_proceed_ahead:
-            return check_element_present_result, step_error_list  # Early return if proceed is False
+            return check_element_present_result, step_error_dict  # Early return if proceed is False
 
         # Checking of element existence by applying waits.
         if wait_type is not None:
@@ -221,8 +225,10 @@ class BrowserAppSteps:
                 traceback.print_exc()
                 can_proceed_ahead = False
 
+        step_error_dict["load_page_function"] = step_error
+
         if not can_proceed_ahead:
-            return check_element_present_result, step_error_list  # Early return if proceed is False
+            return check_element_present_result, step_error_dict  # Early return if proceed is False
 
         if scr_shot_needed:
             time.sleep(screenshot_delay)
@@ -230,8 +236,11 @@ class BrowserAppSteps:
                                              screen_shot_name, step_error)
             step_error+= step_err
 
+        step_error_dict["load_page_function"] = step_error
+
+
         if not can_proceed_ahead:
-            return check_element_present_result, step_error_list  # Early return if proceed is False
+            return check_element_present_result, step_error_dict  # Early return if proceed is False
 
         for element_key, element_data in current_page_check_elements.items():
 
@@ -260,9 +269,10 @@ class BrowserAppSteps:
                 traceback.print_exc()
                 can_proceed_ahead = False
             
+        step_error_dict["load_page_function"] = step_error
 
         if not can_proceed_ahead:
-            return check_element_present_result, step_error_list  # Early return if proceed is False
+            return check_element_present_result, step_error_dict  # Early return if proceed is False
             
         element_id= page_exit_element['id']
 
@@ -280,8 +290,9 @@ class BrowserAppSteps:
             traceback.print_exc()
             can_proceed_ahead= False
 
-        step_error_list+= step_error
-        return check_element_present_result, step_error_list
+        step_error_dict["load_page_function"] = step_error
+
+        return check_element_present_result, step_error_dict
 
 
 
