@@ -17,6 +17,10 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
     InvalidArgumentException, InvalidElementStateException
 import time
 import traceback
+import yaml
+from zoneinfo import ZoneInfo
+from datetime import datetime, timedelta
+from mdutils.mdutils import MdUtils
 
 
 
@@ -150,6 +154,7 @@ class BrowserAppSteps:
                 step_error_list, screenshot_path,
                 screen_shot_name, wait_element_id)
         
+        print("visit",check_element_present_result)
         return check_element_present_result, page_load_time, all_step_error_list
 
 
@@ -185,10 +190,11 @@ class BrowserAppSteps:
 
         step_error=""
         check_element_present_result = {}
-
+       
         if not can_proceed_ahead:
             return check_element_present_result, step_error_list  # Early return if proceed is False
 
+        # Checking of element existence by applying waits.
         if wait_type is not None:
             try:
                 if wait_type == "implicit":
@@ -221,22 +227,28 @@ class BrowserAppSteps:
 
         for element_key, element_data in current_page_check_elements.items():
 
+
             if 'id' not in element_data:
                 step_error += f"Element {element_key}: 'id' key is missing."
                 can_proceed_ahead= False
+                print("Error",step_error)
 
             elif not element_data['id'].strip():
                 step_error += f"Element {element_key}: 'id' value is an empty string."
                 can_proceed_ahead= False
+                print("Error",step_error)
 
             try:
                 wait = WebDriverWait(self.driver, implicit_wait_duration)
                 wait.until(EC.presence_of_element_located((By.ID,wait_element_id)))
+                check_element_present_result[element_key] ={}
                 check_element_present_result[element_key]["found"] = True
+                print("load222222222",check_element_present_result)
                     
             except NoSuchElementException as e:
                 step_error+=f"FATAL: No Element named {element_key} found\n"
                 can_proceed_ahead= False
+                print(step_error)
 
 
             except Exception as e:
@@ -310,4 +322,184 @@ class BrowserAppSteps:
         
         step_error_list+= step_error
         return can_proceed_ahead, step_error_list
+
+    def write_comic_out_content(self, step_name: str, step_image: str, \
+            step_page_load_time: str, current_page_elements: dict,\
+            check_element_present_result: dict, element_detail_msg: str):
+        
+        '''
+         Get the comic out file content for a particular step.
+
+        Args:
+            step_name (str): The name of the step.
+            step_image (str): The image of the particular step.
+            step_page_load_time (str): The time taken to load the page for the step.
+            step_elements (dict): A dictionary containing information about elements on the page.
+            check_element_present_result (dict): A dictionary containing the results of element checks.
+            element_detail_msg (str): A message template for element visibility.
+
+        Returns:
+            tuple: A tuple containing the comic out file content as a dictionary and any step errors as a string.
+
+        Example:
+            step_name = "Step 1"
+            step_image = "step1.png"
+            step_page_load_time = "3.45 seconds"
+            step_elements = {
+                'e1': {'id': 'msg_info', 'type': 'h1', 'text': 'Welcome to Rasree App'},
+                'e2': {'id': 'log_info', 'type': 'h1', 'text': 'No One is currently Logged in'}
+            }
+            check_element_present_result = {
+                'e1': {'found': True},
+                'e2': {'found': False}
+            }
+            element_detail_msg = "An element with ID {}, type {}, and text {} is present."
+            comic_content, errors = write_comic_out_content(step_name, step_image, step_page_load_time, 
+                                   current_page_elements, check_element_present_result, 
+                                   element_detail_msg) 
+        
+        Output Example :
+            (
+                {
+                'step_name': 'Step 1', 
+                'image': 'step1.png', 
+                'render_time': '3.45 seconds', 
+                'e1_details': 'An element with ID msg_info, 
+                              type h1, and text Welcome to Rasree App is present.',
+                'e1_result': True, 
+                'e2_details': 'An element with ID log_info, type h1, and 
+                             text No One is currently Logged in is present.', 
+                'e2_result': False
+               },
+            ''
+          )
+        '''
+        
+        step_error= ""
+        step_error_list=""
+        print("***",current_page_elements)
+        print("&&&&",check_element_present_result)
+        try:
+            comic_out_content_response_dict={}
+            comic_out_content_response_dict['step_name']= step_name
+            comic_out_content_response_dict['image'] = step_image
+            comic_out_content_response_dict['render_time']= step_page_load_time
+            
+            for element_key in current_page_elements:
+                comic_out_content_response_dict[element_key+'_details'] = element_detail_msg.format(current_page_elements[element_key]['id'], current_page_elements[element_key]['type'], current_page_elements[element_key]['text'])
+                comic_out_content_response_dict[element_key+'_result'] = check_element_present_result[element_key]['found']
+        
+        except Exception as e:
+                step_error+=f"FATAL: Unhandled exception stoping step execution: {e}\n"
+                traceback.print_exc()
+
+        step_error_list+= step_error
+        return comic_out_content_response_dict, step_error_list
+
+
+
+    def write_comic_out(self, filename: str, comic_out_content: dict):
+
+        '''
+        Write the test output data into a YAML file.
+
+        Args:
+            filename (str): The name of the file where the output will be stored.
+            out_content (dict): The content of the file in dictionary format.
+
+        Note:
+            The function will append to the existing file or create a new file if it doesn't exist.
+
+        Example:
+            comic_out_content = {
+                'date_time': '2023-08-03-10-30-45',
+                'step1': {'found': True, 'duration': 2.35},
+                'step2': {'found': False, 'duration': 0.78},
+                # ...
+            }
+            write_comic_out('comic_out.yaml', comic_out_content)
+        '''
+        with open(str(filename), 'a+') as file:
+            yaml.dump(comic_out_content, file, default_flow_style=False)
+
+
+    def write_comic_file(self, comic_out_path: str,comic_out_name: str,
+                        comic_file_name: str, comic_out_title: str,
+                        comic_out_content_dict: dict):
+        
+        '''
+        Write the comic file based on the provided comic_out_content_dict.
+
+        Args:
+            comic_out_path (str): The path where the comic output YAML file should be stored.
+            comic_out_name (str): The filename for the comic output in YAML format.
+            comic_file_name (str): The filename for the comic output in Markdown format.
+            comic_out_title (str): The title of the comic story.
+            comic_out_content_dict (dict): A dictionary containing the content of the comic steps.
+
+        Returns:
+            str: Any step errors encountered during writing the comic file.
+            Creates md documented file with better human readability  as required.
+
+        Example:
+            comic_out_path = "./"
+            comic_out_name = "comic_out.yaml"
+            comic_file_name = "comic_out.md"
+            comic_out_title = "unsigned home Page story"
+            comic_out_content_dict = {
+                'Step 1': {
+                    'image': 'step1.png',
+                    'render_time': '3.45 seconds',
+                    'e1_details': 'An element with ID msg_info, type h1, and text Welcome to Rasree App is present.',
+                    'e1_result': True,
+                    'e2_details': 'An element with ID log_info, type h1, and text No One is currently Logged in is present.',
+                    'e2_result': False
+                },
+                'Step 2': {
+                    # Other step details
+                },
+                # More steps...
+            }
+            step_errors = write_comic_file(comic_out_path, comic_out_name, comic_file_name, 
+                                        comic_out_title, comic_out_content_dict)
+        '''
+        
+        step_error = ""
+        step_error_list = ""
+        file_name= comic_out_path+ comic_file_name
+
+        try:
+        
+            current_time = (datetime.now(tz=ZoneInfo('Asia/Kolkata'))).strftime('%H:%M:%S')
+
+            comic_generated_md_file = MdUtils(file_name)
+            comic_generated_md_file.new_header(level=1, title=f' {comic_out_title} {current_time}')
+
+            for comic_step in comic_out_content_dict:
+
+                if comic_step != "date_time":
+                    comic_generated_md_file.new_line()
+                    comic_generated_md_file.new_header(level=2, title= f' {comic_step} : ')
+
+                    for check in comic_out_content_dict[comic_step]:
+
+                        if check == "image":
+                            comic_generated_md_file.new_line()
+                            comic_generated_md_file.new_header(level=3, title= "Screenshot: ")
+                            comic_generated_md_file.new_line(comic_generated_md_file.new_inline_image(text= "", path=f"./comic/{comic_out_content_dict[comic_step][check]}"))
+                        comic_generated_md_file.new_line()
+                        comic_generated_md_file.new_line(f"{check}: {comic_out_content_dict[comic_step][check]}")
+                        
+            comic_generated_md_file.create_md_file()
+        
+        except FileNotFoundError as e:
+            step_error=f"No File named {e} found\n"
+            print("step error: ",step_error)
+        
+        except Exception as e:
+            step_error="FATAL: In click element to load page, Unhandled Exception, see printed log\n"
+            print("step error: ",step_error)
+
+        step_error_list+= step_error
+        return step_error_list
 

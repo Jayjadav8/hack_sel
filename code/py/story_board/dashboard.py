@@ -26,8 +26,24 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
          Implements the comic story steps for the unsigned home page.
         '''
 
-        comic_out ={}
-        comic_out['date_time']= datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+        # print_dict = {
+        #     "url": str(self.story.step_04_02.url),
+        #     "scr_shot_needed": bool(self.story.step_04_02.screenshot_needed),
+        #     "wait": str(self.story.step_04_02.wait.type),
+        #     "duration": int(self.story.step_04_02.wait.duration),
+        #     "page_checks":  page_checks,
+        #     "exit_element": exit_element,
+        #     "screen_shot_path": self.story.screenshot_path,
+        #     "screen_shot_name": self.story.step_04_02.screenshot_name,
+        #     "sl_time": self.story.sl_time
+        # }
+
+        # # Print the dictionary with variable names and their values
+        # for key, value in print_dict.items():
+        #     print(f"{key}: {value}")
+
+        comic_out_content_dict ={}
+        comic_out_content_dict['date_time']= datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
         url = str(self.story.step_04_02.url)
         scr_shot_needed = bool(self.story.step_04_02.screenshot_needed)
         wait=str(self.story.step_04_02.wait.type)
@@ -37,26 +53,51 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
         screen_shot_path = self.story.screenshot_path
         screen_shot_name = self.story.step_04_02.screenshot_name
         sl_time= self.story.sl_time
+        wait_element_id = "inputHomeIcon"
 
-        print_dict = {
-            "url": str(self.story.step_04_02.url),
-            "scr_shot_needed": bool(self.story.step_04_02.screenshot_needed),
-            "wait": str(self.story.step_04_02.wait.type),
-            "duration": int(self.story.step_04_02.wait.duration),
-            "page_checks":  page_checks,
-            "exit_element": exit_element,
-            "screen_shot_path": self.story.screenshot_path,
-            "screen_shot_name": self.story.step_04_02.screenshot_name,
-            "sl_time": self.story.sl_time
-        }
+        step_04_02_check_element_present_result, step_04_02_page_load_time, step_04_02_errors\
+                        = self.visit_page(url, wait, duration, scr_shot_needed,\
+                         page_checks, exit_element, screen_shot_path, screen_shot_name,wait_element_id) 
 
-        # Print the dictionary with variable names and their values
-        for key, value in print_dict.items():
-            print(f"{key}: {value}")
+        comic_out_file= self.story.comic_out_name
+        
+        # Creating comic_out yaml file
+        self.write_comic_out(comic_out_file, comic_out_content_dict)
+        
+
+        current_step_elements= (self.story.step_04_02.check_elements).to_dict()
+        element_detail_msg= self.story.element_detail_msg
+        step_name= self.story.step_04_02.name
+        step_image = self.story.step_04_02.screenshot_name
+    
+        comic_out_content_dict_04_02, step_error_list = self.write_comic_out_content\
+                     (step_name, step_image, step_04_02_page_load_time,\
+                    current_step_elements, step_04_02_check_element_present_result,\
+                    element_detail_msg)
+    
+    
+        comic_out_content_dict["step_04_02"]= comic_out_content_dict_04_02
+
+        comic_out_path= self.story.comic_out_path
+        comic_out_name= self.story.comic_out_name
+        comic_out_title= self.story.comic_out_title
+        comic_file_name = self.story.comic_file_name
+
+        # Creating comic_out md file
+        self.write_comic_file(comic_out_path, comic_out_name,\
+                               comic_file_name, comic_out_title, comic_out_content_dict)
 
 
 
-        pass
+
+
+
+        # pass
+
+    def __del__(self):
+        if self.driver is not None:
+            self.driver.quit()
+
 
 if __name__ == '__main__':
     n = len(sys.argv)
