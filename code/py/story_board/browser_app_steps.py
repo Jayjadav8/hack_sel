@@ -134,6 +134,8 @@ class BrowserAppSteps:
         '''
 
         url = str(step_input_data["url"])
+
+        # Dictionary containing errors if Exception occurs.
         step_error_dict= {}
         step_error=""
         can_proceed_ahead=True
@@ -148,14 +150,15 @@ class BrowserAppSteps:
         except TimeoutException as e:
             step_error="FATAL: Time out Exception has occur ,Page not Found\n"
             can_proceed_ahead=False
+            step_error_dict["visit_page_function"]= step_error
+
 
         except Exception as e:
             step_error="FATAL: In visit page, Unhandled Exception has occur \n"
             can_proceed_ahead=False
+            step_error_dict["visit_page_function"]= step_error
 
-        # Dictionary containing errors if Exception occurs.
-        step_error_dict["visit_page_function"]= step_error
-
+    
         # Inserting required values to load_page() function
         check_element_present_result, all_step_error_list = \
             self.load_page(can_proceed_ahead, step_input_data,step_error_dict, wait_element_id)
@@ -164,8 +167,7 @@ class BrowserAppSteps:
 
 
     def load_page(self,can_proceed_ahead:bool,step_input_data:dict,
-        step_error_dict :dict,\
-        wait_element_id: str = None, screenshot_delay: int =2):
+        step_error_dict :dict,wait_element_id: str = None, screenshot_delay: int =2):
 
         '''
         Perform tasks like taking a screenshot, checking elements, and 
@@ -219,13 +221,13 @@ class BrowserAppSteps:
             except NoSuchElementException as e:
                 can_proceed_ahead = False
                 step_error=f"FATAL: No Element named {wait_element_id} found after {implicit_wait_duration}\n"
+                step_error_dict["load_page_function"] = step_error
 
             except Exception as e:
                 step_error+= f"FATAL: Unhandled exception stoping step execution: {e}\n"
                 traceback.print_exc()
                 can_proceed_ahead = False
-
-        step_error_dict["load_page_function"] = step_error
+                step_error_dict["load_page_function"] = step_error
 
         if not can_proceed_ahead:
             return check_element_present_result, step_error_dict  # Early return if proceed is False
@@ -234,9 +236,8 @@ class BrowserAppSteps:
             time.sleep(screenshot_delay)
             can_proceed_ahead, step_err = self.take_screenshot(screenshot_path,\
                                              screen_shot_name, step_error)
-            step_error+= step_err
-
-        step_error_dict["load_page_function"] = step_error
+            if step_err != "":
+                step_error_dict["load_page_function"] = step_err
 
 
         if not can_proceed_ahead:
@@ -248,10 +249,13 @@ class BrowserAppSteps:
             if 'id' not in element_data:
                 step_error += f"Element {element_key}: 'id' key is missing."
                 can_proceed_ahead= False
+                step_error_dict["load_page_function"] = step_error
+
 
             elif not element_data['id'].strip():
                 step_error += f"Element {element_key}: 'id' value is an empty string."
                 can_proceed_ahead= False
+                step_error_dict["load_page_function"] = step_error
 
             try:
                 wait = WebDriverWait(self.driver, implicit_wait_duration)
@@ -262,14 +266,14 @@ class BrowserAppSteps:
             except NoSuchElementException as e:
                 step_error+=f"FATAL: No Element named {element_key} found\n"
                 can_proceed_ahead= False
+                step_error_dict["load_page_function"] = step_error
 
 
             except Exception as e:
                 step_error+= f"FATAL: Unhandled exception stoping step execution: {e}\n"
                 traceback.print_exc()
                 can_proceed_ahead = False
-            
-        step_error_dict["load_page_function"] = step_error
+                step_error_dict["load_page_function"] = step_error
 
         if not can_proceed_ahead:
             return check_element_present_result, step_error_dict  # Early return if proceed is False
@@ -284,13 +288,13 @@ class BrowserAppSteps:
 
         except NoSuchElementException as e:
             step_error+=f"No Element named {element_id} found\n"
+            step_error_dict["load_page_function"] = step_error
 
         except Exception as e:
             step_error+=f"FATAL: Unhandled exception stoping step execution: {e}\n"
             traceback.print_exc()
             can_proceed_ahead= False
-
-        step_error_dict["load_page_function"] = step_error
+            step_error_dict["load_page_function"] = step_error
 
         return check_element_present_result, step_error_dict
 

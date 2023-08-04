@@ -33,8 +33,6 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
         screen_shot_path = comic_dashboard_data["screenshot_path"]
         step_04_02_data["screen_shot_path"] =screen_shot_path
     
-        comic_out_content_dict ={}
-        comic_out_content_dict['date_time']= datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
         
     
         sl_time= comic_dashboard_data["sl_time"]
@@ -42,24 +40,23 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
         step_name= step_04_02_data["name"]
         step_image = step_04_02_data["screenshot_name"]        
         element_detail_msg= comic_dashboard_data["element_detail_msg"]
-        comic_out_path= comic_dashboard_data["comic_out_path"]
-        comic_out_name= comic_dashboard_data["comic_out_name"]
-        comic_out_title= comic_dashboard_data["comic_out_title"]
-        comic_file_name = comic_dashboard_data["comic_file_name"]
-        comic_out_file= comic_dashboard_data["comic_out_name"]
         
         wait_element_id = "inputHomeIcon"
 
+        # Creating comic_out yaml file
+        comic_out_content_dict ={}
+        comic_out_content_dict['date_time']= datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+        comic_out_file= comic_dashboard_data["comic_out_name"]
+
+
+
+        # Element checking steps
         step_04_02_check_element_present_result, step_04_02_page_load_time, step_04_02_errors\
                         = self.visit_page(step_04_02_data,wait_element_id) 
 
 
-        
-        # Creating comic_out yaml file
-        self.write_comic_out(comic_out_file, comic_out_content_dict)
-        
+        # generate dictionary for md file which states element present or not.
         current_step_elements= step_04_02_data["check_elements"]
-
         comic_out_content_dict_04_02, step_error_list = self.write_comic_out_content\
                      (step_name, step_image, step_04_02_page_load_time,\
                     current_step_elements, step_04_02_check_element_present_result,\
@@ -68,7 +65,17 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
     
         comic_out_content_dict["step_04_02"]= comic_out_content_dict_04_02
 
-        # Creating comic_out md file
+
+        # Creating comic_out yaml file
+        self.write_comic_out(comic_out_file, comic_out_content_dict)
+        
+
+
+        # Creating comic_out md file 
+        comic_out_path= comic_dashboard_data["comic_out_path"]
+        comic_out_name= comic_dashboard_data["comic_out_name"]
+        comic_out_title= comic_dashboard_data["comic_out_title"]
+        comic_file_name = comic_dashboard_data["comic_file_name"]
         self.write_comic_file(comic_out_path, comic_out_name,\
                                comic_file_name, comic_out_title, comic_out_content_dict)
 
