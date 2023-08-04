@@ -506,3 +506,61 @@ class BrowserAppSteps:
         step_error_list+= step_error
         return step_error_list
 
+def click_element_to_load_page(self, link_id: str, wait: str, duration: int, scrshot: bool, checks: dict, exit_element: dict,
+                               screenshot_path: str = None, screen_shot_name: str = None, wait_el_id: str = None,
+                               sl_time: int = 2):
+    '''
+    Clicks on an element to load a new page and then loads the page and performs checks.
+
+    Parameters:
+        link_id (str): The ID of the link element to be clicked.
+        wait (str): The type of wait, either "implicit" or "explicit".
+        duration (int): The time duration in seconds for the webdriver to wait.
+        scrshot (bool): True if a screenshot should be taken, False otherwise.
+        checks (dict): A dictionary containing the components that the page should have.
+        exit_element (dict): A dictionary containing the hook element to the next page.
+        screenshot_path (str, optional): The path where screenshots will be stored.
+        screen_shot_name (str, optional): The name of the screenshot file.
+        wait_el_id (str, optional): The element ID used to pause the driver, allowing the page to load and elements to become visible/clickable.
+        sl_time (int, optional): The sleep time in seconds after the click before proceeding with the page loading.
+
+    Returns:
+        dict: A dictionary containing the check results.
+        float: The page load time in seconds.
+        str: A string containing any errors that occurred during the execution.
+    '''
+    step_error = ""
+    step_error_list = ""
+    check_result = {}
+    proceed = True
+    pageload_time = None
+
+    try:
+        # Click on the element with the specified ID to load a new page.
+        WebDriverWait(self.driver, duration).until(EC.presence_of_element_located((By.ID, str(link_id)))).click()
+
+        # Calculate the page load time.
+        pageload_time = self.web_page_load_time()
+
+    except NoSuchElementException as e:
+        step_error += f"FATAL: No Element named {link_id} found: {e}\n"
+        print("step error: ", step_error)
+        proceed = False
+
+    except Exception as e:
+        step_error = "FATAL: In click element to load page, Unhandled Exception, see printed log\n"
+        print("step error: ", step_error)
+        print(e)
+        proceed = False
+
+    step_error_list += step_error
+
+    # Pause execution for the specified time to allow the page to load completely.
+    time.sleep(sl_time)
+
+    # Load the page and perform checks.
+    check_result, step_error_list = self.load_page(proceed, wait, duration, scrshot, checks, exit_element,
+                                                   step_error_list, check_result, screenshot_path,
+                                                   screen_shot_name, wait_el_id, sl_time)
+
+    return check_result, pageload_time, step_error_list

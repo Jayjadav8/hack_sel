@@ -26,50 +26,46 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
          Implements the comic story steps for the unsigned home page.
         '''
 
-        # print_dict = {
-        #     "url": str(self.story.step_04_02.url),
-        #     "scr_shot_needed": bool(self.story.step_04_02.screenshot_needed),
-        #     "wait": str(self.story.step_04_02.wait.type),
-        #     "duration": int(self.story.step_04_02.wait.duration),
-        #     "page_checks":  page_checks,
-        #     "exit_element": exit_element,
-        #     "screen_shot_path": self.story.screenshot_path,
-        #     "screen_shot_name": self.story.step_04_02.screenshot_name,
-        #     "sl_time": self.story.sl_time
-        # }
+        # Convert yaml object to dictionary.
+        comic_dashboard_data = self.story.to_dict()
+        step_04_02_data = self.story.step_04_02.to_dict()
 
-        # # Print the dictionary with variable names and their values
-        # for key, value in print_dict.items():
-        #     print(f"{key}: {value}")
-
+        
         comic_out_content_dict ={}
         comic_out_content_dict['date_time']= datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
-        url = str(self.story.step_04_02.url)
-        scr_shot_needed = bool(self.story.step_04_02.screenshot_needed)
-        wait=str(self.story.step_04_02.wait.type)
-        duration= int(self.story.step_04_02.wait.duration)
-        page_checks= (self.story.step_04_02.check_elements).to_dict()
-        exit_element=(self.story.step_04_02.exit_element).to_dict()
-        screen_shot_path = self.story.screenshot_path
-        screen_shot_name = self.story.step_04_02.screenshot_name
-        sl_time= self.story.sl_time
+        
+        url = str(step_04_02_data["url"])
+        scr_shot_needed = bool(step_04_02_data["screenshot_needed"])
+        wait=str(step_04_02_data["wait"]["type"])
+        duration= int(step_04_02_data["wait"]["duration"])
+        page_checks= step_04_02_data["check_elements"]
+        exit_element= step_04_02_data["exit_element"]
+        screen_shot_name = step_04_02_data["screenshot_name"]
+        step_name= step_04_02_data["name"]
+        step_image = step_04_02_data["screenshot_name"]
+
+        screen_shot_path = comic_dashboard_data["screenshot_path"]
+        sl_time= comic_dashboard_data["sl_time"]
+        element_detail_msg= comic_dashboard_data["element_detail_msg"]
+        comic_out_path= comic_dashboard_data["comic_out_path"]
+        comic_out_name= comic_dashboard_data["comic_out_name"]
+        comic_out_title= comic_dashboard_data["comic_out_title"]
+        comic_file_name = comic_dashboard_data["comic_file_name"]
+
+        
         wait_element_id = "inputHomeIcon"
 
         step_04_02_check_element_present_result, step_04_02_page_load_time, step_04_02_errors\
                         = self.visit_page(url, wait, duration, scr_shot_needed,\
                          page_checks, exit_element, screen_shot_path, screen_shot_name,wait_element_id) 
 
-        comic_out_file= self.story.comic_out_name
+        comic_out_file= comic_dashboard_data["comic_out_name"]
         
         # Creating comic_out yaml file
         self.write_comic_out(comic_out_file, comic_out_content_dict)
         
+        current_step_elements= step_04_02_data["check_elements"]
 
-        current_step_elements= (self.story.step_04_02.check_elements).to_dict()
-        element_detail_msg= self.story.element_detail_msg
-        step_name= self.story.step_04_02.name
-        step_image = self.story.step_04_02.screenshot_name
-    
         comic_out_content_dict_04_02, step_error_list = self.write_comic_out_content\
                      (step_name, step_image, step_04_02_page_load_time,\
                     current_step_elements, step_04_02_check_element_present_result,\
@@ -77,11 +73,6 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
     
     
         comic_out_content_dict["step_04_02"]= comic_out_content_dict_04_02
-
-        comic_out_path= self.story.comic_out_path
-        comic_out_name= self.story.comic_out_name
-        comic_out_title= self.story.comic_out_title
-        comic_file_name = self.story.comic_file_name
 
         # Creating comic_out md file
         self.write_comic_file(comic_out_path, comic_out_name,\
