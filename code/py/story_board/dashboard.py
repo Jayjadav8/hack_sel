@@ -19,7 +19,7 @@ class TestPage01unsignedhomepage(BrowserAppSteps):
             comic_data (YAMLObject): The YAMLObject containing comic story data.
         '''
         super().__init__(browser=comic_data.browser, browser_server_url=comic_data.browser_server_url,
-                         duration=comic_data.driver_wait)
+                         driver_wait_duration=comic_data.driver_wait)
         self.story = comic_data
 
     def test_page01unsignedhomepage(self):

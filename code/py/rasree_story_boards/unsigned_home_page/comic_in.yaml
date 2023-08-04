@@ -1,0 +1,10 @@
+comic_dashboard_data:
+  browser: "chrome"                        
+  browser_server_url: "http://localhost"   
+  app_url: "https://qbrow.rasree.com/"     
+  comic_out_path: "./"                     
+  comic_out_name: "comic_out.yaml"         
+  comic_file_name: "comic_out.md"          
+  comic_output_title: "Unsigned Home Page"        
+  element_detail_msg: "an element with id {} of type {} with text {} "  
+  driver_wait: 10                         

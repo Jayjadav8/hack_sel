@@ -6,6 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
 from mdutils import MdUtils
+from datetime import datetime
+
 # ... Other code ...
 
 def inputExploreBtn(self):
@@ -100,7 +102,14 @@ def output_comic_content(result_dictionary_list: list):
         Generates a Markdown file named 'comic_output.md' with the comic output content.
     '''
 
-    comic_generated_md_file = MdUtils(file_name='comic_output', title='Unsigned Home Page')
+    # Get the current date and time
+    current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    # Create the title with date and time
+    title_with_datetime = f"Unsigned Home Page - {current_datetime}"
+
+
+    comic_generated_md_file = MdUtils(file_name='comic_output', title=title_with_datetime)
 
     for item in result_dictionary_list:
         # Add headers and content to the Markdown file

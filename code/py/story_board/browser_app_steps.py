@@ -42,10 +42,10 @@ class BrowserAppSteps:
     driver= None
     browser_name= None 
     browser_server_url= None
-    duration= 10
+    driver_wait_duration= 10
 
 
-    def __init__(self, browser:str= None, browser_server_url:str=None, duration: int = 10):
+    def __init__(self, browser:str= None, browser_server_url:str=None, driver_wait_duration: int = 10):
         '''
           Initializes the BrowserAppSteps object.
 
@@ -57,12 +57,12 @@ class BrowserAppSteps:
         '''
         self.browser_name= browser
         self.browser_server_url= browser_server_url
-        self.duration = duration
+        self.driver_wait_duration = driver_wait_duration
         if self.browser_name is None or self.browser_server_url is None:
             print("FATAL: Useless to create class without browser and server")
             sys.exit(1)
         else:
-            self.setUp(self.browser_name, self.browser_server_url, self.duration)
+            self.setUp(self.browser_name, self.browser_server_url, self.driver_wait_duration)
         current_date_time=datetime.now()
         date_time_string = current_date_time.strftime("%Y-%m-%d-%H-%M-%S")
         self.comic_out_folder="comic-"+date_time_string+"/"
