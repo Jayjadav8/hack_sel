@@ -22,3 +22,80 @@ step_04_02:
   image: 01_01.png
   render_time: 1.544
   step_name: ' User visit unsigned page of Rasree '
+date_time: 04-08-2023-18-17-40
+step_04_02:
+  e1_details: 'an element with id inputExploreBtn of type button with text Explore '
+  e1_result: true
+  e2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  e2_result: true
+  e3_details: 'an element with id inputSearchBar of type type with text Search for
+    subjects, concepts, tutors, etc. '
+  e3_result: true
+  e4_details: 'an element with id inputViewAllCoursesButton of type button with text
+    View more '
+  e4_result: true
+  e5_details: 'an element with id inputViewCourseDetails_1 of type button with text
+    View details '
+  e5_result: true
+  e6_details: 'an element with id inputViewTeamDetailsButton of type button with text
+    View more '
+  e6_result: true
+  e7_details: 'an element with id inputSignInButton of type button with text Sign
+    in '
+  e7_result: true
+  image: 01_01.png
+  render_time: 1.568
+  step_name: ' User visit unsigned page of Rasree '
+date_time: 04-08-2023-18-34-24
+step_01_03: !!python/tuple
+- Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+- true
+step_04_02:
+  e1_details: 'an element with id inputExploreBtn of type button with text Explore '
+  e1_result: true
+  e2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  e2_result: true
+  e3_details: 'an element with id inputSearchBar of type type with text Search for
+    subjects, concepts, tutors, etc. '
+  e3_result: true
+  e4_details: 'an element with id inputViewAllCoursesButton of type button with text
+    View more '
+  e4_result: true
+  e5_details: 'an element with id inputViewCourseDetails_1 of type button with text
+    View details '
+  e5_result: true
+  e6_details: 'an element with id inputViewTeamDetailsButton of type button with text
+    View more '
+  e6_result: true
+  e7_details: 'an element with id inputSignInButton of type button with text Sign
+    in '
+  e7_result: true
+  error_raise: ''
+  image: 01_01.png
+  render_time: 1.126
+  step_name: ' User visit unsigned page of Rasree '
+date_time: 04-08-2023-18-49-41
+step_04_02:
+  e1_details: 'an element with id inputExploreBtn of type button with text Explore '
+  e1_result: true
+  e2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  e2_result: true
+  e3_details: 'an element with id inputSearchBar of type type with text Search for
+    subjects, concepts, tutors, etc. '
+  e3_result: true
+  e4_details: 'an element with id inputViewAllCoursesButton of type button with text
+    View more '
+  e4_result: true
+  e5_details: 'an element with id inputViewCourseDetails_1 of type button with text
+    View details '
+  e5_result: true
+  e6_details: 'an element with id inputViewTeamDetailsButton of type button with text
+    View more '
+  e6_result: true
+  e7_details: 'an element with id inputSignInButton of type button with text Sign
+    in '
+  e7_result: true
+  error_raise: ''
+  image: 01_01.png
+  render_time: 1.962
+  step_name: ' User visit unsigned page of Rasree '

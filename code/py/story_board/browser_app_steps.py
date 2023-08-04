@@ -412,7 +412,8 @@ class BrowserAppSteps:
                 traceback.print_exc()
 
         step_error_list+= step_error
-        return comic_out_content_response_dict, step_error_list
+        comic_out_content_response_dict["error_raise"] = step_error_list
+        return comic_out_content_response_dict
 
 
 
@@ -494,7 +495,7 @@ class BrowserAppSteps:
             comic_generated_md_file.new_header(level=1, title=f' {comic_out_title} {current_time}')
 
             for comic_step in comic_out_content_dict:
-
+                print("****",comic_step)
                 if comic_step != "date_time":
                     comic_generated_md_file.new_line()
                     comic_generated_md_file.new_header(level=2, title= f' {comic_step} : ')
