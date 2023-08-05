@@ -18,7 +18,7 @@ class TestPage01UnsignedHomePage(BrowserAppSteps):
             comic_data (YAMLObject): The YAMLObject containing comic story data.
         '''
         super().__init__(browser=comic_data.browser, browser_server_url=comic_data.browser_server_url,
-                         duration=comic_data.driver_wait)
+                         driver_wait_duration=comic_data.driver_wait)
         self.story = comic_data
 
     def test_page_01_unsigned_home_page(self):
@@ -27,18 +27,37 @@ class TestPage01UnsignedHomePage(BrowserAppSteps):
         '''
 
         # Convert yaml object to dictionary.
-        comic_dashboard_data = self.story.to_dict()
-        step_01_data = self.story.step_04_02.to_dict()
+        comic_dashboard_general_data_dict = self.story.to_dict()
+        step_02_data_dict = self.story.step_01_02.to_dict()
 
-        screen_shot_path = comic_dashboard_data["screenshot_path"]
+        # Check all the elements to be tested on step 2 listed are present or not.
+        step_02_check_element_present_result, step_02_page_load_time, step_02_error_dict\
+                        = self.visit_page_to_be_tested_in_step(step_02_data_dict) 
         
-        step_01_data["screen_shot_path"] =screen_shot_path
-        
-        sl_time= comic_dashboard_data["sl_time"]
-        step_name= step_01_data["name"]
-        step_image = step_01_data["screenshot_name"]        
-        element_detail_msg= comic_dashboard_data["element_detail_msg"]
+        if bool(step_02_error_dict):
+            print("The dictionary is not empty.")
+            # TODO : abort testing and generate report.
 
+        # Generating readable response of element presences in step 2 listed,
+        # which would be input to function which generate md readable file.
+         
+        step_03_element_check_readable_response_dict , step_03_error_dict = \
+            self.element_check_readable_response(step_02_data_dict,\
+                 step_02_check_element_present_result , step_02_page_load_time)
+        
+        if bool(step_03_error_dict):
+            print("The dictionary is not empty.")
+        # TODO : abort testing and generate report.
+
+        # Creating comic_out yaml file
+        comic_out_content_dict ={}
+        comic_out_content_dict["visitStep"]= step_03_element_check_readable_response_dict
+        comic_out_file_name= comic_dashboard_general_data_dict["comic_out_name"]
+        # Creating comic_out yaml file
+        self.write_comic_out(comic_out_file_name, comic_out_content_dict)
+    
+        
+        
 
 
     def __del__(self):

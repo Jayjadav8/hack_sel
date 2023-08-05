@@ -1,0 +1,24 @@
+visitStep:
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+  image: 01_01.png
+  render_time: 1.755
+  step_name: 'Element Verify for step 2 '
