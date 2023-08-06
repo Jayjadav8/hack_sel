@@ -222,14 +222,10 @@ class BrowserAppSteps:
         if not can_proceed_ahead:
             return check_element_present_result, load_page_function_step_error_dict  # Early return if can_proceed_ahead is False
 
-        # if screenshot_needed:
-        #     step_error = self.take_screenshot(screenshots_directory_path,\
-        #                             screenshot_name)
-            
-            # Error during taking screenshots in step.
-            if step_error != None:
-                can_proceed_ahead = False
-                load_page_function_step_error_dict["screenshot_function"] = step_error
+        if screenshot_needed:
+            step_name = step_input_data_dict["screenshot_name"]
+            self.capture_screenshot(step_name,"visitPage")
+
 
         if not can_proceed_ahead:
             return check_element_present_result, load_page_function_step_error_dict  # Early return if can_proceed_ahead is False
@@ -337,9 +333,10 @@ class BrowserAppSteps:
 
         try:
             element_check_readable_response_dict={}
-            element_check_readable_response_dict['step_name']= step_input_data_dict["step_name"]
-            element_check_readable_response_dict['image'] = step_input_data_dict["screenshot_name"]
-            element_check_readable_response_dict['render_time']= step_02_page_load_time
+            element_check_readable_response_dict['Step']= step_input_data_dict["step_name"]
+            element_check_readable_response_dict['Details']= step_input_data_dict["step_desciption"]
+            element_check_readable_response_dict['Screenshots'] = step_input_data_dict["screenshot_name"]
+            element_check_readable_response_dict['Time_taken']= step_02_page_load_time
             
             for element_key in current_page_elements:
                 element_check_readable_response_dict[element_key+'_details'] = element_detail_msg.format(current_page_elements[element_key]['id'], current_page_elements[element_key]['type'], current_page_elements[element_key]['text'])
@@ -379,10 +376,63 @@ class BrowserAppSteps:
             yaml.dump(comic_out_content, file, default_flow_style=False)
 
 
+    def inputExploreBtn(self):
+        """
+        Clicks on the 'inputExploreBtn' element on the page, measures the time before and after,
+        verifies the page title, and takes screenshots before and after the click operation.
 
+        Returns:
+            dict: A dictionary containing six keys:
+                - "step" (str): The step number or description of the action.
+                - "testing_function" (str): The name of the testing function being executed.
+                - "details" (str): Contains either an error message or a message confirming the page title match.
+                - "result" (bool): True if the page title matches the expected title, False otherwise.
+                - "time_taken" (float): The time taken in seconds between clicking the element and checking the conditions.
+                - "screenshots" (list): A list containing the paths to the screenshots taken before and after the click operation.
+        """
 
+        # Record the start time before clicking the element
+        start_time = time.time()
 
+        # Capture a screenshot before clicking the element
+        step_name = "Before_Click"
+        screenshot_before = self.capture_screenshot(step_name,"inputExploreBtn")
 
+        # Click on the 'inputExploreBtn' element
+        self.driver.find_element(By.ID, "inputExploreBtn").click()
+
+        # Capture a screenshot after clicking the element
+        step_name = "After_Click"
+        screenshot_after = self.capture_screenshot(step_name,"inputExploreBtn")
+
+        # Record the end time after checking conditions and getting the actual title
+        end_time = time.time()
+
+        # Calculate the time taken for the click operation and title verification
+        time_taken = end_time - start_time
+
+        # Define the expected title
+        expected_title = "Explore | Rasree"
+
+        # Get the actual title of the page
+        actual_title = self.driver.title
+
+        # Check if the actual title matches the expected title
+        if expected_title not in actual_title:
+            details = f"Page title '{actual_title}' does not match expected title '{expected_title}'"
+            result = False
+        else:
+            details = f"Page title '{actual_title}' matches expected title '{expected_title}'"
+            result = True
+
+        return {
+            "Step": "Step 3",  # Replace this with the appropriate step number or description
+            "Testing_function": "inputExploreBtn",
+            "Details": details,
+            "Result": result,
+            "Time_taken": time_taken,
+            "Screenshots": [screenshot_before, screenshot_after]
+        }
 
 
     def capture_screenshot(self, step_name, test_name):
@@ -396,10 +446,74 @@ class BrowserAppSteps:
         '''
 
         # Create a directory for storing the screenshots if it doesn't exist
-        screenshots_directory = "../screenshot"
+        screenshots_directory = "./screenshot"
         test_directory = os.path.join(screenshots_directory, test_name)
         if not os.path.exists(test_directory):
             os.makedirs(test_directory)
         screenshot_path = os.path.join(test_directory, f"{step_name}.png")
         self.driver.get_screenshot_as_file(screenshot_path)
         return screenshot_path
+
+
+
+
+    def output_comic_content(self,element_check_readable_response_dict:dict,result_dictionary_list: list):
+        '''
+        Generate a Markdown file with the comic output based on the provided result_dictionary_list.
+
+        Input attribute:
+            result_dictionary_list (list): A list of dictionaries containing the test results.
+
+        Output:
+            Generates a Markdown file named 'comic_output.md' with the comic output content.
+        '''
+
+        # Get the current date and time
+        current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        # Create the title with date and time
+        title_with_datetime = f"Unsigned Home Page - {current_datetime}"
+
+
+        comic_generated_md_file = MdUtils(file_name='comic_output', title=title_with_datetime)
+
+        comic_generated_md_file.new_header(level=2, title=element_check_readable_response_dict["Step"], add_table_of_contents="n")
+        comic_generated_md_file.new_header(level=3, title="Details", add_table_of_contents="n")
+        comic_generated_md_file.new_list([element_check_readable_response_dict['Details']])
+        comic_generated_md_file.new_header(level=3, title="Time_taken", add_table_of_contents="n")
+        comic_generated_md_file.new_list([str(element_check_readable_response_dict['Time_taken'])])
+        comic_generated_md_file.new_header(level=3, title="Screenshots", add_table_of_contents="n")
+        comic_generated_md_file.new_list([str(element_check_readable_response_dict['Screenshots'])])
+        comic_generated_md_file.new_header(level=3, title="Elements Details and Results", add_table_of_contents="n")
+        
+
+        for key, value in element_check_readable_response_dict.items():
+            if key.startswith('element_') and key.endswith('_details'):
+                element_number = key.split('_')[1]
+                element_result_key = f"element_{element_number}_result"
+
+                if element_result_key in element_check_readable_response_dict:
+                    comic_generated_md_file.new_header(level=4, title="Element Details", add_table_of_contents="n")
+                    comic_generated_md_file.new_list([str(value)])
+                    comic_generated_md_file.new_header(level=4, title="Element Result", add_table_of_contents="n")
+                    comic_generated_md_file.new_list([str(element_check_readable_response_dict[element_result_key])])
+
+
+
+        for item in result_dictionary_list:
+            # Add headers and content to the Markdown file
+            comic_generated_md_file.new_header(level=2, title=item["Step"], add_table_of_contents="n")
+            comic_generated_md_file.new_header(level=3, title="Testing_function", add_table_of_contents="n")
+            comic_generated_md_file.new_list([item['Testing_function']])
+            comic_generated_md_file.new_header(level=3, title="Details", add_table_of_contents="n")
+            comic_generated_md_file.new_list([item['Details']])
+            comic_generated_md_file.new_header(level=3, title="Result", add_table_of_contents="n")
+            comic_generated_md_file.new_list([str(item['Result'])])
+            comic_generated_md_file.new_header(level=3, title="Time_taken", add_table_of_contents="n")
+            comic_generated_md_file.new_list([str(item['Time_taken'])])
+            comic_generated_md_file.new_header(level=3, title="Screenshots", add_table_of_contents="n")
+            comic_generated_md_file.new_list([str(item['Screenshots'])])
+
+            comic_generated_md_file.new_line()
+
+        comic_generated_md_file.create_md_file()

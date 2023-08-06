@@ -1,3 +1,12 @@
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 1
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6488845348358154
 visitStep:
   element_1_details: 'an element with id inputExploreBtn of type button with text
     Explore '
@@ -20,5 +29,678 @@ visitStep:
     Sign in '
   element_7_result: true
   image: 01_01.png
-  render_time: 1.755
+  render_time: 1.147
   step_name: 'Element Verify for step 2 '
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 1
+  Testing_function: inputExploreBtn
+  Time_taken: 0.7016043663024902
+visitStep:
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+  image: 01_01.png
+  render_time: 1.011
+  step_name: 'Element Verify for step 2 '
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 1
+  Testing_function: inputExploreBtn
+  Time_taken: 0.7092514038085938
+visitStep:
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+  image: 01_01.png
+  render_time: 1.523
+  step_name: 'Element Verify for step 2 '
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 1
+  Testing_function: inputExploreBtn
+  Time_taken: 0.7564527988433838
+visitStep:
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+  image: 01_01.png
+  render_time: 1.564
+  step_name: 'Element Verify for step 2 '
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 1
+  Testing_function: inputExploreBtn
+  Time_taken: 0.652108907699585
+visitStep:
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+  image: 01_01.png
+  render_time: 1.476
+  step_name: 'Element Verify for step 2 '
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 1
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6317577362060547
+visitStep:
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+  image: 01_01.png
+  render_time: 1.541
+  step_name: 'Element Verify for step 2 '
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6076996326446533
+visitStep:
+  Screenshots: 01_01.png
+  Time_taken: 1.236
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+  step: 'Element Verify for step 2 '
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.7104992866516113
+visitStep:
+  Screenshots: 01_01.png
+  Step: 'Element Verify for step 2 '
+  Time_taken: 1.543
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6024138927459717
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.187
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.5935747623443604
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.282
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6288847923278809
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.501
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.686610221862793
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.587
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6666672229766846
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.532
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6371800899505615
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.644
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6046686172485352
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.513
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.6946539878845215
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.553
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.7631480693817139
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.35
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.7743306159973145
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: 01_01.png
+  Step: 'Step 2 '
+  Time_taken: 1.195
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.5492639541625977
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: visit_page_step
+  Step: 'Step 2 '
+  Time_taken: 1.479
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ../screenshot/inputExploreBtn/Before_Click.png
+  - ../screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.5983626842498779
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: visit_page_step
+  Step: 'Step 2 '
+  Time_taken: 1.513
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ./screenshot/inputExploreBtn/Before_Click.png
+  - ./screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 0.568936824798584
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: visit_page_step
+  Step: 'Step 2 '
+  Time_taken: 1.739
+  element_1_details: 'an element with id inputExploreBtn of type button with text
+    Explore '
+  element_1_result: true
+  element_2_details: "an element with id inputHomeIcon of type img with text \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id inputSearchBar of type type with text Search
+    for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id inputViewAllCoursesButton of type button
+    with text View more '
+  element_4_result: true
+  element_5_details: 'an element with id inputViewCourseDetails_1 of type button with
+    text View details '
+  element_5_result: true
+  element_6_details: 'an element with id inputViewTeamDetailsButton of type button
+    with text View more '
+  element_6_result: true
+  element_7_details: 'an element with id inputSignInButton of type button with text
+    Sign in '
+  element_7_result: true

@@ -49,15 +49,26 @@ class TestPage01UnsignedHomePage(BrowserAppSteps):
             print("The dictionary is not empty.")
         # TODO : abort testing and generate report.
 
+
+        # Checking functionality of Explore Button :
+        comic_out_explore_button_content_dict = self.inputExploreBtn()
+
+
+
         # Creating comic_out yaml file
         comic_out_content_dict ={}
+        comic_out_content_dict["Explore"]= comic_out_explore_button_content_dict
         comic_out_content_dict["visitStep"]= step_03_element_check_readable_response_dict
-        comic_out_file_name= comic_dashboard_general_data_dict["comic_out_name"]
-        # Creating comic_out yaml file
-        self.write_comic_out(comic_out_file_name, comic_out_content_dict)
     
-        
-        
+        comic_out_file_name= comic_dashboard_general_data_dict["comic_out_name"]
+        self.write_comic_out(comic_out_file_name, comic_out_content_dict)
+
+
+        # Generating md readable file : comic_output.md
+        comic_out_element_functionality_test_list_response = []
+        comic_out_element_functionality_test_list_response.append(comic_out_explore_button_content_dict)
+        self.output_comic_content(step_03_element_check_readable_response_dict,\
+                                  comic_out_element_functionality_test_list_response)
 
 
     def __del__(self):
