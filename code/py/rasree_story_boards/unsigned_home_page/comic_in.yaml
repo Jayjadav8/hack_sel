@@ -12,7 +12,7 @@ comic_dashboard_data:
     step_name : "Step 2 "
     step_desciption: "Verify all test elements id are present on page."  
     page_url: "https://qbrow.rasree.com/"     
-    element_detail_msg: "an element with id {} of type {} with text {} "  
+    element_detail_msg: "an element with Id : {} of Type :  {} with Text : {} "  
     screenshot_needed: True              
     screenshot_name: "visit_page_step"  
     screenshots_directory_path: "../screenshot"       

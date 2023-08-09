@@ -66,3 +66,73 @@ visitStep:
   element_7_details: 'an element with id inputSignInButton of type button with text
     Sign in '
   element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ./screenshot/inputExploreBtn/Before_Click.png
+  - ./screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 5.192156553268433
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: visit_page_step
+  Step: 'Step 2 '
+  Time_taken: 6.94
+  element_1_details: 'an element with id : inputExploreBtn of type :  button with
+    text : Explore '
+  element_1_result: true
+  element_2_details: "an element with id : inputHomeIcon of type :  img with text\
+    \ : \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with id : inputSearchBar of type :  type with text
+    : Search for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with id : inputViewAllCoursesButton of type :  button
+    with text : View more '
+  element_4_result: true
+  element_5_details: 'an element with id : inputViewCourseDetails_1 of type :  button
+    with text : View details '
+  element_5_result: true
+  element_6_details: 'an element with id : inputViewTeamDetailsButton of type :  button
+    with text : View more '
+  element_6_result: true
+  element_7_details: 'an element with id : inputSignInButton of type :  button with
+    text : Sign in '
+  element_7_result: true
+Explore:
+  Details: Page title 'Explore | Rasree' matches expected title 'Explore | Rasree'
+  Result: true
+  Screenshots:
+  - ./screenshot/inputExploreBtn/Before_Click.png
+  - ./screenshot/inputExploreBtn/After_Click.png
+  Step: Step 3
+  Testing_function: inputExploreBtn
+  Time_taken: 9.293079614639282
+visitStep:
+  Details: Verify all test elements id are present on page.
+  Screenshots: visit_page_step
+  Step: 'Step 2 '
+  Time_taken: 8.242
+  element_1_details: 'an element with Id : inputExploreBtn of Type :  button with
+    Text : Explore '
+  element_1_result: true
+  element_2_details: "an element with Id : inputHomeIcon of Type :  img with Text\
+    \ : \thttps://qbrow.rasree.com/img/rasree-logo.690c3e83.png "
+  element_2_result: true
+  element_3_details: 'an element with Id : inputSearchBar of Type :  type with Text
+    : Search for subjects, concepts, tutors, etc. '
+  element_3_result: true
+  element_4_details: 'an element with Id : inputViewAllCoursesButton of Type :  button
+    with Text : View more '
+  element_4_result: true
+  element_5_details: 'an element with Id : inputViewCourseDetails_1 of Type :  button
+    with Text : View details '
+  element_5_result: true
+  element_6_details: 'an element with Id : inputViewTeamDetailsButton of Type :  button
+    with Text : View more '
+  element_6_result: true
+  element_7_details: 'an element with Id : inputSignInButton of Type :  button with
+    Text : Sign in '
+  element_7_result: true

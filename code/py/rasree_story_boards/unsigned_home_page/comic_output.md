@@ -1,5 +1,5 @@
 
-Unsigned Home Page - 2023-08-09 15:01:01
+Unsigned Home Page - 2023-08-09 15:04:50
 ========================================
 
 ## Step 2 
@@ -10,7 +10,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 ### Time_taken
 
-- 106.489
+8.242
 
 ### Screenshots
 
@@ -20,7 +20,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 #### Element Details
 
-- an element with id inputExploreBtn of type button with text Explore 
+- an element with Id : inputExploreBtn of Type :  button with Text : Explore 
 
 #### Element Result
 
@@ -28,7 +28,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 #### Element Details
 
-- an element with id inputHomeIcon of type img with text 	https://qbrow.rasree.com/img/rasree-logo.690c3e83.png 
+- an element with Id : inputHomeIcon of Type :  img with Text : 	https://qbrow.rasree.com/img/rasree-logo.690c3e83.png 
 
 #### Element Result
 
@@ -36,7 +36,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 #### Element Details
 
-- an element with id inputSearchBar of type type with text Search for subjects, concepts, tutors, etc. 
+- an element with Id : inputSearchBar of Type :  type with Text : Search for subjects, concepts, tutors, etc. 
 
 #### Element Result
 
@@ -44,7 +44,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 #### Element Details
 
-- an element with id inputViewAllCoursesButton of type button with text View more 
+- an element with Id : inputViewAllCoursesButton of Type :  button with Text : View more 
 
 #### Element Result
 
@@ -52,7 +52,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 #### Element Details
 
-- an element with id inputViewCourseDetails_1 of type button with text View details 
+- an element with Id : inputViewCourseDetails_1 of Type :  button with Text : View details 
 
 #### Element Result
 
@@ -60,7 +60,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 #### Element Details
 
-- an element with id inputViewTeamDetailsButton of type button with text View more 
+- an element with Id : inputViewTeamDetailsButton of Type :  button with Text : View more 
 
 #### Element Result
 
@@ -68,7 +68,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 #### Element Details
 
-- an element with id inputSignInButton of type button with text Sign in 
+- an element with Id : inputSignInButton of Type :  button with Text : Sign in 
 
 #### Element Result
 
@@ -90,7 +90,7 @@ Unsigned Home Page - 2023-08-09 15:01:01
 
 ### Time_taken
 
-- 44.92600393295288
+9.293079614639282
 
 ### Screenshots
 

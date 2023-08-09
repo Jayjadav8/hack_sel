@@ -448,8 +448,10 @@ class BrowserAppSteps:
         # Create a directory for storing the screenshots if it doesn't exist
         screenshots_directory = "./screenshot"
         test_directory = os.path.join(screenshots_directory, test_name)
+
         if not os.path.exists(test_directory):
             os.makedirs(test_directory)
+
         screenshot_path = os.path.join(test_directory, f"{step_name}.png")
         self.driver.get_screenshot_as_file(screenshot_path)
         return screenshot_path
