@@ -57,17 +57,17 @@ class TestPage01UnsignedHomePage(BrowserAppSteps):
 
         # Creating comic_out yaml file
         comic_out_content_dict ={}
-        comic_out_content_dict["Explore"]= comic_out_explore_button_content_dict
         comic_out_content_dict["visitStep"]= step_03_element_check_readable_response_dict
-    
+        comic_out_content_dict["Explore"]= comic_out_explore_button_content_dict
+        
         comic_out_file_name= comic_dashboard_general_data_dict["comic_out_name"]
-        self.write_comic_out(comic_out_file_name, comic_out_content_dict)
+        self.write_comic_out_yaml(comic_out_file_name, comic_out_content_dict)
 
 
         # Generating md readable file : comic_output.md
         comic_out_element_functionality_test_list_response = []
         comic_out_element_functionality_test_list_response.append(comic_out_explore_button_content_dict)
-        self.output_comic_content(step_03_element_check_readable_response_dict,\
+        self.output_comic_content_md(step_03_element_check_readable_response_dict,\
                                   comic_out_element_functionality_test_list_response)
 
 
@@ -86,10 +86,10 @@ if __name__ == '__main__':
     try:
         with open("./" + config_file, "r") as f:
             comic_data = yaml.safe_load(f)
-        dashboard_config = YAMLObject('comic_in', (object,),\
+        unsigned_home_page_config = YAMLObject('comic_in', (object,),\
              {'source': comic_data, 'namespace': 'comic_dashboard_data'})
 
-        test_unsigned_home_page_object = TestPage01UnsignedHomePage(dashboard_config)
+        test_unsigned_home_page_object = TestPage01UnsignedHomePage(unsigned_home_page_config)
         test_unsigned_home_page_object.test_page_01_unsigned_home_page()
 
     except FileNotFoundError:

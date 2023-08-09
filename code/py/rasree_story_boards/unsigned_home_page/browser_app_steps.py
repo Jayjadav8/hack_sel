@@ -351,7 +351,7 @@ class BrowserAppSteps:
 
 
 
-    def write_comic_out(self, comic_out_file_name: str, comic_out_content: dict):
+    def write_comic_out_yaml(self, comic_out_file_name: str, comic_out_content: dict):
 
         '''
         Write the test output data into a YAML file.
@@ -457,7 +457,7 @@ class BrowserAppSteps:
 
 
 
-    def output_comic_content(self,element_check_readable_response_dict:dict,result_dictionary_list: list):
+    def output_comic_content_md(self,element_check_readable_response_dict:dict,result_dictionary_list: list):
         '''
         Generate a Markdown file with the comic output based on the provided result_dictionary_list.
 
