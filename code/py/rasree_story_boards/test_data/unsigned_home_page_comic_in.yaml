@@ -65,7 +65,15 @@ comic_in:
     step_functionality: "clickability"
     element_to_click: "inputExploreBtn"
     expected_title: "Explore | Rasree"
+
+  step_01_04: 
+    step_name: "Step 4"
+    step_description: "To check Input Home Icon"
+    step_functionality: "clickability"
+    element_to_click: "inputHomeIcon"
+    expected_title: "Home | Rasree"
     
+
 
 
 

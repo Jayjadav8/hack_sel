@@ -30,7 +30,9 @@ class TestPage(BrowserAppSteps):
         # Convert yaml object to dictionary.
         comic_dashboard_general_data_dict = self.story.to_dict()
         element_check_readable_response_dict = {}
-        comic_out_explore_button_content_dict = {}
+        comic_out_clicability_content_dict = {}
+        comic_out_element_functionality_test_list_response = []
+        
 
         for step_name, step_data in comic_dashboard_general_data_dict.items():
             step_functionality = step_data.get('step_functionality')
@@ -62,7 +64,9 @@ class TestPage(BrowserAppSteps):
             elif step_functionality == 'clickability':
 
                 # Checking functionality of clickability element:
-                comic_out_explore_button_content_dict = self.inputExploreBtn(step_data)
+                comic_out_clicability_content_dict = self.inputExploreBtn(step_data)
+                # Generating md readable file : comic_output.md
+                comic_out_element_functionality_test_list_response.append(comic_out_clicability_content_dict)
 
 
             else:
@@ -72,16 +76,18 @@ class TestPage(BrowserAppSteps):
         # Creating comic_out yaml file
         comic_out_content_dict ={}
         comic_out_content_dict["visitStep"]= element_check_readable_response_dict
-        comic_out_content_dict["Explore"]= comic_out_explore_button_content_dict
+        comic_out_content_dict["Explore"]= comic_out_clicability_content_dict
         
         # comic_out_file_name= comic_dashboard_general_data_dict["comic_out_name"]
         comic_out_file_name = "comic_output.yaml"  
         self.write_comic_out_yaml(comic_out_file_name, comic_out_content_dict)
 
 
-        # Generating md readable file : comic_output.md
-        comic_out_element_functionality_test_list_response = []
-        comic_out_element_functionality_test_list_response.append(comic_out_explore_button_content_dict)
+        
+
+
+
+
         self.output_comic_content_md(element_check_readable_response_dict,\
                                   comic_out_element_functionality_test_list_response)
 

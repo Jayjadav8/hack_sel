@@ -471,7 +471,10 @@ class BrowserAppSteps:
         if not os.path.exists(test_directory):
             os.makedirs(test_directory)
 
-        screenshot_path = os.path.join(test_directory, f"{step_name}.png")
+        current_datetime = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        step_name_with_timestamp = f"{step_name}_{current_datetime}"
+
+        screenshot_path = os.path.join(test_directory, f"{step_name_with_timestamp}.png")
         self.driver.get_screenshot_as_file(screenshot_path)
         return screenshot_path
 

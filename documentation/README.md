@@ -202,6 +202,6 @@ selenium==4.10.0
 
 ## To run script
 ```
-$  python 01_unsigned_home_page.py comic_in.yaml
+$  python  execution.py  unsigned_home_page_comic_in.yaml
 ```
 
