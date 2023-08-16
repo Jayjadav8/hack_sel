@@ -57,7 +57,7 @@ class BrowserAppSteps:
         driver_wait_duration = 10
         self.browser_name= browser
         self.browser_server_url= browser_server_url
-        # self.driver_wait_duration = driver_wait_duration
+  
         if self.browser_name is None or self.browser_server_url is None:
             print("FATAL: Useless to create class without browser and server")
             sys.exit(1)
@@ -453,7 +453,7 @@ class BrowserAppSteps:
         }
 
 
-    def capture_screenshot(self, step_name, test_name):
+    def capture_screenshot(self, step_name, test_function_name):
         ''' 
         Captures a screenshot of the current browser window and 
         saves it with the given step_name.
@@ -465,7 +465,8 @@ class BrowserAppSteps:
 
         # Create a directory for storing the screenshots if it doesn't exist
         screenshots_directory = "./screenshot"
-        test_directory = os.path.join(screenshots_directory, test_name)
+        test_name = "Unsigned Home Page"
+        test_directory = os.path.join(screenshots_directory,test_name, test_function_name)
 
         if not os.path.exists(test_directory):
             os.makedirs(test_directory)
