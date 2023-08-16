@@ -372,7 +372,24 @@ class BrowserAppSteps:
             }
             write_comic_out('comic_out.yaml', comic_out_content)
         '''
-        with open(str(comic_out_file_name), 'a+') as file:
+        # Define the path where you want to save the YAML file
+        output_path = "/path/to/desired/location"
+
+        title = "Unsigned Home Page"
+        output_directory = "./Reports"
+        comic_out_directory = os.path.join(output_directory, title)
+
+        if not os.path.exists(comic_out_directory):
+            os.makedirs(comic_out_directory)
+
+        comic_out_directory_path =  os.path.join(comic_out_directory, "comic_output.yaml")
+
+
+        # # Combine the output path with the file name
+        # comic_out_file_name = os.path.join(output_path, "comic_output.yaml")
+
+
+        with open(str(comic_out_directory_path), 'a+') as file:
             yaml.dump(comic_out_content, file, default_flow_style=False)
 
 
@@ -475,9 +492,17 @@ class BrowserAppSteps:
 
         # Create the title with date and time
         title_with_datetime = f"Unsigned Home Page - {current_datetime}"
+        title = "Unsigned Home Page"
+        output_directory = "./Reports"
+        comic_out_directory = os.path.join(output_directory, title)
 
+        if not os.path.exists(comic_out_directory):
+            os.makedirs(comic_out_directory)
 
-        comic_generated_md_file = MdUtils(file_name='comic_output', title=title_with_datetime)
+        comic_out_directory_path =  os.path.join(comic_out_directory, title_with_datetime)
+        
+
+        comic_generated_md_file = MdUtils(file_name=comic_out_directory_path, title=title_with_datetime)
 
         comic_generated_md_file.new_header(level=2, title=element_check_readable_response_dict["Step"], add_table_of_contents="n")
         comic_generated_md_file.new_header(level=3, title="Details", add_table_of_contents="n")

@@ -1,4 +1,5 @@
-comic_dashboard_data:
+comic_in:
+  name: " Comic Unsigned Dashboard Data "
   browser: "chrome"                        
   browser_server_url: "http://localhost"   
   driver_wait: 10                         

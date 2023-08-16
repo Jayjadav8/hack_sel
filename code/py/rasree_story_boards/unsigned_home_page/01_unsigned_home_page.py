@@ -87,7 +87,7 @@ if __name__ == '__main__':
         with open("./" + config_file, "r") as f:
             comic_data = yaml.safe_load(f)
         unsigned_home_page_config = YAMLObject('comic_in', (object,),\
-             {'source': comic_data, 'namespace': 'comic_dashboard_data'})
+             {'source': comic_data, 'namespace': 'comic_in'})
 
         test_unsigned_home_page_object = TestPage01UnsignedHomePage(unsigned_home_page_config)
         test_unsigned_home_page_object.test_page_01_unsigned_home_page()
