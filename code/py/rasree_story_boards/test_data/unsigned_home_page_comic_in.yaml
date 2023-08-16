@@ -18,7 +18,6 @@ comic_in:
     screenshot_needed: True              
     screenshot_name: "visit_page_step"  
     screenshots_directory_path: "../screenshot"       
-    page_load_time: 0
     wait:
       implicit_type_duration: 60
       explicit_type_duration: 10

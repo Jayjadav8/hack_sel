@@ -24,15 +24,12 @@ class TestPage(BrowserAppSteps):
 
     def test_page(self):
         '''
-         Implements the comic story steps for the unsigned home page.
+         Implements the comic story steps for the Test page.
         '''
      
         # Convert yaml object to dictionary.
         comic_dashboard_general_data_dict = self.story.to_dict()
-        # element_check_readable_response_dict = {}
-        comic_out_clicability_content_dict = {}
         comic_out_element_functionality_test_list_response = []
-        # Creating comic_out yaml file
         comic_out_content_dict ={}
         
 

@@ -104,26 +104,21 @@ class BrowserAppSteps:
     def visit_page_to_be_tested_in_step(self,step_input_data_dict:dict):
 
         '''
-        Visits a page in the browser app, checks required elements' presence,
-          and takes screenshots if specified.
-        
-        Args:
-            step_input_data(dict) contains fiollowing :
-                url (str): The URL of the page to visit in the browser app.
-                wait (str): The type of wait to apply during the page load (implicit, explicit, or fluent).
-                duration (int): The duration of the WebDriver wait time in seconds.
-                scr_shot_needed (bool): Whether to take a screenshot (True) or not (False).
-                checks (dict): A dictionary containing elements that should be present on the page.
-                exit_element (dict): A dictionary representing the exit element to proceed to the next page.
-                screenshot_path (str, optional): The path where screenshots will be stored. Default is None.
-                screenshot_name (str, optional): The name of the screenshot. Default is None.
-        
-                Returns:
-                dict: A dictionary containing check results and other information.
-                    - check_result: A dictionary containing the results of the checks performed on the page.
-                    - pageload_time: The time taken for the page to load in seconds.
-                    - step_error_list: A string containing any errors that occurred during the page visit and checks.
-                
+           Visits a page in the browser app, checks required elements' presence,
+            and takes screenshots if specified.
+
+            Args:
+                step_input_data_dict (dict): A dictionary containing step input data with the following keys:
+                    - "page_url" (str): The URL of the page to visit in the browser app.
+                  
+            Returns:
+                tuple: A tuple containing:
+                    - dict: A dictionary containing check results and other information.
+                        - "check_element_present_result": A dictionary containing the results of the checks performed on the page.
+                        - "pageload_time": The time taken for the page to load in seconds.
+                    - float: Page load time in seconds.
+                    - dict: visit_function_step_error_dict - A dictionary containing any errors that occurred during the page visit and checks.
+                                
         '''
 
         page_url = str(step_input_data_dict["page_url"])
@@ -134,7 +129,7 @@ class BrowserAppSteps:
         check_element_present_result = {}
         
         can_proceed_ahead=True
-        page_load_time = step_input_data_dict["page_load_time"]
+        page_load_time = 0
 
         try:
             self.driver.get(page_url)
