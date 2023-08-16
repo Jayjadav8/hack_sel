@@ -20,13 +20,13 @@ class TestPage01UnsignedHomePage(BrowserAppSteps):
         super().__init__(browser=comic_data.step_01_01.browser, browser_server_url=comic_data.step_01_01.browser_server_url)
         self.story = comic_data
 
-    def test_page_01_unsigned_home_page(self):
+    def test_page(self):
         '''
          Implements the comic story steps for the unsigned home page.
         '''
-            # Convert yaml object to dictionary.
+     
+        # Convert yaml object to dictionary.
         comic_dashboard_general_data_dict = self.story.to_dict()
-        step_02_data_dict = self.story.step_01_02.to_dict()
         step_02_element_check_readable_response_dict = {}
         comic_out_explore_button_content_dict = {}
 
@@ -34,15 +34,13 @@ class TestPage01UnsignedHomePage(BrowserAppSteps):
             step_functionality = step_data.get('step_functionality')
 
             if step_functionality == 'general_info':
-                print(step_data.get('step_name'))
-                # Do something for the "general_info" step_functionality
+                pass
 
             elif step_functionality == 'validate_element':
-                print(step_data.get('step_name'))
 
                 # Check all the elements to be tested on step 2 listed are present or not.
                 step_02_check_element_present_result, step_02_page_load_time, step_02_error_dict\
-                                = self.visit_page_to_be_tested_in_step(step_02_data_dict) 
+                                = self.visit_page_to_be_tested_in_step(step_data) 
                 
                 if bool(step_02_error_dict):
                     print("The dictionary is not empty.")
@@ -52,7 +50,7 @@ class TestPage01UnsignedHomePage(BrowserAppSteps):
                 # which would be input to function which generate md readable file.
             
                 step_02_element_check_readable_response_dict , step_02_readable_error_dict = \
-                    self.element_check_readable_response(step_02_data_dict,\
+                    self.element_check_readable_response(step_data,\
                         step_02_check_element_present_result , step_02_page_load_time)
                 
                 if bool(step_02_readable_error_dict):
@@ -61,14 +59,9 @@ class TestPage01UnsignedHomePage(BrowserAppSteps):
 
    
             elif step_functionality == 'clickability':
-                # Do something for the "clickability" step_functionality
-                print(step_data.get('step_name'))
 
-                step_03_data_dict = self.story.step_01_03.to_dict()
-
-                    # Checking functionality of clickability element:
-                comic_out_explore_button_content_dict = self.inputExploreBtn(step_03_data_dict)
-
+                # Checking functionality of clickability element:
+                comic_out_explore_button_content_dict = self.inputExploreBtn(step_data)
 
 
             else:
@@ -114,7 +107,7 @@ if __name__ == '__main__':
              {'source': comic_data, 'namespace': 'comic_in'})
 
         test_unsigned_home_page_object = TestPage01UnsignedHomePage(unsigned_home_page_config)
-        test_unsigned_home_page_object.test_page_01_unsigned_home_page()
+        test_unsigned_home_page_object.test_page()
 
     except FileNotFoundError:
         print("ERROR: comic.yaml file not found.")
