@@ -10,7 +10,7 @@ comic_in:
     comic_describtion: " To Test web elements on unsigned home page which includes ..."        
     
   step_01_02:                            
-    step_name : "Step 2 "
+    step_name : "Step 2"
     step_desciption: "Verify all test elements id are present on page."  
     step_functionality: "validate_element"
     page_url: "https://qbrow.rasree.com/"     
@@ -73,7 +73,14 @@ comic_in:
     element_to_click: "inputHomeIcon"
     expected_title: "Home | Rasree"
     
-
+  step_01_05: 
+    step_name: "Step 5"
+    step_description: "To check Search bar"
+    step_functionality: "send_keys"
+    element_to_click: "inputSearchBar"
+    input_text: "course"
+    expected_search_page_url: "https://qbrow.rasree.com/browseSearch?search_text=course"
+    
 
 
 

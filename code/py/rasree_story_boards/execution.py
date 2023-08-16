@@ -29,9 +29,11 @@ class TestPage(BrowserAppSteps):
      
         # Convert yaml object to dictionary.
         comic_dashboard_general_data_dict = self.story.to_dict()
-        element_check_readable_response_dict = {}
+        # element_check_readable_response_dict = {}
         comic_out_clicability_content_dict = {}
         comic_out_element_functionality_test_list_response = []
+        # Creating comic_out yaml file
+        comic_out_content_dict ={}
         
 
         for step_name, step_data in comic_dashboard_general_data_dict.items():
@@ -56,6 +58,10 @@ class TestPage(BrowserAppSteps):
                     self.element_check_readable_response(step_data,\
                         check_element_present_result , page_load_time)
                 
+                key_name = step_data.get('step_name')
+
+                comic_out_content_dict[f"{key_name}"]= element_check_readable_response_dict
+                
                 if bool(readable_error_dict):
                     print("The dictionary is not empty.")
                 # TODO : abort testing and generate report.
@@ -64,7 +70,22 @@ class TestPage(BrowserAppSteps):
             elif step_functionality == 'clickability':
 
                 # Checking functionality of clickability element:
-                comic_out_clicability_content_dict = self.inputExploreBtn(step_data)
+                comic_out_clicability_content_dict = self.clickabilityCheck(step_data)
+                
+                key_name = step_data.get('step_name')
+                comic_out_content_dict[f"{key_name}"]= comic_out_clicability_content_dict
+
+                # Generating md readable file : comic_output.md
+                comic_out_element_functionality_test_list_response.append(comic_out_clicability_content_dict)
+
+            elif step_functionality == 'send_keys':
+
+                # Checking functionality of clickability element:
+                comic_out_clicability_content_dict = self.check_element_interaction(step_data)
+                
+                key_name = step_data.get('step_name')
+                comic_out_content_dict[f"{key_name}"]= comic_out_clicability_content_dict
+
                 # Generating md readable file : comic_output.md
                 comic_out_element_functionality_test_list_response.append(comic_out_clicability_content_dict)
 
@@ -73,20 +94,13 @@ class TestPage(BrowserAppSteps):
                 # Handle other cases or provide a default action
                 pass
 
-        # Creating comic_out yaml file
-        comic_out_content_dict ={}
-        comic_out_content_dict["visitStep"]= element_check_readable_response_dict
-        comic_out_content_dict["Explore"]= comic_out_clicability_content_dict
+
+        
+
         
         # comic_out_file_name= comic_dashboard_general_data_dict["comic_out_name"]
         comic_out_file_name = "comic_output.yaml"  
         self.write_comic_out_yaml(comic_out_file_name, comic_out_content_dict)
-
-
-        
-
-
-
 
         self.output_comic_content_md(element_check_readable_response_dict,\
                                   comic_out_element_functionality_test_list_response)

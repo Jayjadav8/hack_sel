@@ -383,13 +383,13 @@ class BrowserAppSteps:
         if not os.path.exists(comic_out_directory):
             os.makedirs(comic_out_directory)
 
-        comic_out_directory_path =  os.path.join(comic_out_directory, "comic_output.yaml")
+        comic_out_directory_path =  os.path.join(comic_out_directory, comic_out_file_name)
 
         with open(str(comic_out_directory_path), 'a+') as file:
             yaml.dump(comic_out_content, file, default_flow_style=False)
 
 
-    def inputExploreBtn(self,step_data_input:Dict[str,Any]):
+    def clickabilityCheck(self,step_data_input:Dict[str,Any]):
         """
         Clicks on the 'inputExploreBtn' element on the page, measures the time before and after,
         verifies the page title, and takes screenshots before and after the click operation.
@@ -549,3 +549,85 @@ class BrowserAppSteps:
             comic_generated_md_file.new_line()
 
         comic_generated_md_file.create_md_file()
+
+    def check_element_interaction(self,step_data_input:Dict[str,Any])-> Dict[str, Any]:
+        
+        """
+        Check the interaction with a web element and capture screenshots before and after interaction.
+
+        Args:
+            step_data_input (Dict[str, Any]): A dictionary containing information about the interaction step.
+                Expected keys:
+                    - "element_to_click": ID of the element to be clicked.
+                    - "input_text": Text to be sent to the element.
+                    - "step_name": Name of the interaction step.
+                    - "step_description": Description of the testing function.
+                    - "expected_search_page_url": Expected URL after the interaction.
+
+        Returns:
+            Dict[str, Any]: A dictionary containing details about the interaction and its result.
+                Keys:
+                    - "Step": Name of the step.
+                    - "Testing_function": Description of the testing function.
+                    - "Details": Details about the interaction result.
+                    - "Result": True if interaction was successful, False otherwise.
+                    - "Time_taken": Time taken for the interaction.
+                    - "Screenshots": List of before and after interaction screenshots.
+        """
+
+        try:
+
+            element_id = step_data_input["element_to_click"]
+            input_text = step_data_input["input_text"]
+            Step  =  step_data_input["step_name"]
+            Testing_function =  step_data_input["step_description"]
+            expected_search_page_url = step_data_input["expected_search_page_url"]
+
+            # Record the start time before clicking the element
+            start_time = time.time()
+
+            # Capture a screenshot before clicking the element
+            step_name = "Before_Click"
+            screenshot_before = self.capture_screenshot(step_name,element_id)
+
+            # Find the element using its ID
+            element = self.driver.find_element(By.ID, element_id)
+            explicit_wait_duration = 60
+            wait = WebDriverWait(self.driver, explicit_wait_duration)
+            # Check if the element is clickable
+            wait.until(EC.element_to_be_clickable((By.ID, element_id)))
+            
+            # Check if keys can be sent to the element
+            element.send_keys(input_text)
+
+            self.driver.find_element(By.ID, "inputSearchBar").send_keys(Keys.ENTER)
+            time.sleep(5)
+
+            if expected_search_page_url not in self.driver.current_url:
+                details = f"Page URL '{self.driver.current_url}' does not match expected URL '{expected_search_page_url}'"
+                result = False
+            else:
+                details = f"Page URL '{expected_search_page_url}' matches expected URL '{expected_search_page_url}'"
+                result = True
+
+            step_name = "After_Click"
+            screenshot_after = self.capture_screenshot(step_name,element_id)
+
+            # Record the end time after checking conditions and getting the actual title
+            end_time = time.time()
+
+            # Calculate the time taken for the click operation and title verification
+            time_taken = end_time - start_time
+
+            return {
+                "Step": Step,
+                "Testing_function": Testing_function,
+                "Details": details,
+                "Result": result,
+                "Time_taken": time_taken,
+                "Screenshots": [screenshot_before, screenshot_after]
+            }
+            
+        except Exception as e:
+            print(f"Interaction failed: {str(e)}")
+            # TODO
