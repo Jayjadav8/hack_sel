@@ -1,5 +1,5 @@
 
-Unsigned Home Page - 2023-08-16 13:58:06
+Unsigned Home Page - 2023-08-16 15:21:45
 ========================================
 
 ## Step 2 
@@ -10,7 +10,7 @@ Unsigned Home Page - 2023-08-16 13:58:06
 
 ### Time_taken
 
-- 84.035
+1.371
 
 ### Screenshots
 
@@ -78,7 +78,7 @@ Unsigned Home Page - 2023-08-16 13:58:06
 
 ### Testing_function
 
-- inputExploreBtn
+- To check Explore button Works.
 
 ### Details
 
@@ -90,7 +90,7 @@ Unsigned Home Page - 2023-08-16 13:58:06
 
 ### Time_taken
 
-- 125.59347605705261
+0.5694918632507324
 
 ### Screenshots
 

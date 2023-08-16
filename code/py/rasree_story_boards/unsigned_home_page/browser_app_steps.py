@@ -24,6 +24,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import traceback
+from typing import Dict, Any
 from mdutils import MdUtils
 
 
@@ -41,9 +42,9 @@ class BrowserAppSteps:
     driver= None
     browser_name= None 
     browser_server_url= None
-    driver_wait_duration = 0
 
-    def __init__(self, browser:str, browser_server_url:str, driver_wait_duration: int):
+
+    def __init__(self, browser:str, browser_server_url:str):
         '''
           Initializes the BrowserAppSteps object.
 
@@ -53,14 +54,15 @@ class BrowserAppSteps:
             driver_wait_duration (int): The duration of the app steps.
         
         '''
+        driver_wait_duration = 10
         self.browser_name= browser
         self.browser_server_url= browser_server_url
-        self.driver_wait_duration = driver_wait_duration
+        # self.driver_wait_duration = driver_wait_duration
         if self.browser_name is None or self.browser_server_url is None:
             print("FATAL: Useless to create class without browser and server")
             sys.exit(1)
         else:
-            self.setUp(self.browser_name, self.browser_server_url, self.driver_wait_duration)
+            self.setUp(self.browser_name, self.browser_server_url, driver_wait_duration)
 
     def setUp(self, browser:str, browser_server:str, driver_wait_duration: int):
     
@@ -373,7 +375,6 @@ class BrowserAppSteps:
             write_comic_out('comic_out.yaml', comic_out_content)
         '''
         # Define the path where you want to save the YAML file
-        output_path = "/path/to/desired/location"
 
         title = "Unsigned Home Page"
         output_directory = "./Reports"
@@ -384,16 +385,11 @@ class BrowserAppSteps:
 
         comic_out_directory_path =  os.path.join(comic_out_directory, "comic_output.yaml")
 
-
-        # # Combine the output path with the file name
-        # comic_out_file_name = os.path.join(output_path, "comic_output.yaml")
-
-
         with open(str(comic_out_directory_path), 'a+') as file:
             yaml.dump(comic_out_content, file, default_flow_style=False)
 
 
-    def inputExploreBtn(self):
+    def inputExploreBtn(self,step_data_input:Dict[str,Any]):
         """
         Clicks on the 'inputExploreBtn' element on the page, measures the time before and after,
         verifies the page title, and takes screenshots before and after the click operation.
@@ -408,19 +404,26 @@ class BrowserAppSteps:
                 - "screenshots" (list): A list containing the paths to the screenshots taken before and after the click operation.
         """
 
+        element_to_click = step_data_input["element_to_click"]
+            # Define the expected title
+        expected_title = step_data_input["expected_title"]
+        Step  =  step_data_input["step_name"]
+        Testing_function =  step_data_input["step_description"]
+
+
         # Record the start time before clicking the element
         start_time = time.time()
 
         # Capture a screenshot before clicking the element
         step_name = "Before_Click"
-        screenshot_before = self.capture_screenshot(step_name,"inputExploreBtn")
+        screenshot_before = self.capture_screenshot(step_name,element_to_click)
 
         # Click on the 'inputExploreBtn' element
-        self.driver.find_element(By.ID, "inputExploreBtn").click()
+        self.driver.find_element(By.ID, element_to_click).click()
 
         # Capture a screenshot after clicking the element
         step_name = "After_Click"
-        screenshot_after = self.capture_screenshot(step_name,"inputExploreBtn")
+        screenshot_after = self.capture_screenshot(step_name,element_to_click)
 
         # Record the end time after checking conditions and getting the actual title
         end_time = time.time()
@@ -428,9 +431,7 @@ class BrowserAppSteps:
         # Calculate the time taken for the click operation and title verification
         time_taken = end_time - start_time
 
-        # Define the expected title
-        expected_title = "Explore | Rasree"
-
+    
         # Get the actual title of the page
         actual_title = self.driver.title
 
@@ -443,8 +444,8 @@ class BrowserAppSteps:
             result = True
 
         return {
-            "Step": "Step 3",  # Replace this with the appropriate step number or description
-            "Testing_function": "inputExploreBtn",
+            "Step": Step,
+            "Testing_function": Testing_function,
             "Details": details,
             "Result": result,
             "Time_taken": time_taken,
